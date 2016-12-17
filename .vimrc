@@ -1,52 +1,43 @@
-" Terminal color override "
-set t_Co=256
-let g:rehash256 = 1
-
-colorscheme molokai
-
-set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/syntastic'
-Plugin 'kchmck/vim-coffee-script'
+call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/syntastic'
+Plug 'kchmck/vim-coffee-script'
 "Plugin 'ervandew/supertab'
-Plugin 'godlygeek/tabular'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'othree/html5.vim'
-Plugin 'Shougo/neocomplcache.vim'
-Plugin 'osyo-manga/vim-over'
-Plugin 'mhinz/vim-startify'
-Plugin 'godlygeek/csapprox'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'evidens/vim-twig'
-Plugin 'jceb/vim-orgmode'
-Plugin 'tpope/vim-rails'
-Plugin 'marlun/vim-starwars'
+Plug 'godlygeek/tabular'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'othree/html5.vim'
+Plug 'Shougo/neocomplcache.vim'
+Plug 'osyo-manga/vim-over'
+Plug 'mhinz/vim-startify'
+Plug 'dyng/ctrlsf.vim'
+Plug 'evidens/vim-twig'
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-rails'
+Plug 'marlun/vim-starwars'
+Plug 'altercation/vim-colors-solarized'
+call plug#end()
 
-call vundle#end()
+" Colorscheme "
+syntax on
+set background=light
+colorscheme solarized
 
-" Syntax on, tab settings, line numbering
+" Tab settings, line numbering "
 filetype plugin indent on
-syn on
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set nu
 
-" Clear empty lines on save
+" Clear empty lines on save "
 autocmd BufWritePre * silent! :%s/\s+$//e
 
 " CtrlP opening of files "
@@ -74,9 +65,6 @@ let g:ctrlsf_position = "right"
 let g:netrw_liststyle = 3
 
 " Gvim stuff "
-if has("gui_running")
-	set guifont=Inconsolata-g\ Medium\ 9
-endif
 set guioptions-=m " Remove menubar
 set guioptions-=T " Remove toolbar
 
@@ -92,7 +80,7 @@ set nowritebackup
 
 " Airline stuff "
 let g:airline_powerline_fonts = 1
-let g:airline_theme = "wombat"
+let g:airline_theme = 'solarized'
 
 " JSON format "
 com! FormatJSON %!python -m json.tool

@@ -25,7 +25,6 @@ compinit
 # Color
 autoload colors zsh/terminfo
 colors
-export TERM="xterm-color"
 # PATH additions
 export GOPATH=~/Sredstva/go
 export PATH="$PATH:/home/g1smo/bin:/home/g1smo/.gem/ruby/2.3.0/bin:$GOPATH/bin"
@@ -54,13 +53,21 @@ alias ls='ls --color=auto'
 alias vi='vim'
 alias apachelog="gnome-terminal -e \"tail -f /var/log/httpd/error_log\""
 alias nvidiaoff="sudo modprobe -r nvidia_drm nvidia_modeset nvidia-uvm nvidia; sudo tee /proc/acpi/bbswitch <<<OFF"
+#alias nvidiaoff="sudo tee /sys/kernel/debug/vgaswitcheroo/switch <<<OFF"
 alias sudo="sudo "
 alias grep="grep --color=auto"
 alias paclean="sudo pacman -R \$(pacman -Qdt | awk '{print \$1}')"
 alias ffon="sudo cp /etc/resolv.conf.ff /etc/resolv.conf"
 alias gitclean="git fetch -p && for branch in \$(git branch -vv | grep ': gone]' | gawk '{print \$1}'); do git branch -D \$branch; echo 'deleted \$branch'; done"
-alias wqa="cp /home/g1smo/Sredstva/wandera_qa.yml /home/g1smo/Projects/wandera/app/config/parameters.yml"
+
+# Firefox scaling!
+# regular firefox
+alias sf="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixelsPerPx\\\", \\\")[0-9\\.]+/\\11\.00/' {} + ; firefox"
+alias ff="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixelsPerPx\\\", \\\")[0-9\\.]+/\\11\.75/' {} + ; firefox"
+
+# Wandera env
 alias wdev="cp /home/g1smo/Sredstva/wandera_dev.yml /home/g1smo/Projects/wandera/app/config/parameters.yml"
+alias wqa="cp /home/g1smo/Sredstva/wandera_qa.yml /home/g1smo/Projects/wandera/app/config/parameters.yml"
 
 # Reverse search shortcut
 bindkey '^R' history-incremental-pattern-search-backward
