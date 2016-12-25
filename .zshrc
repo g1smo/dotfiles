@@ -66,8 +66,8 @@ alias sf="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixels
 alias ff="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixelsPerPx\\\", \\\")[0-9\\.]+/\\11\.75/' {} + ; firefox"
 
 # Wandera env
-alias wdev="cp /home/g1smo/Sredstva/wandera_dev.yml /home/g1smo/Projects/wandera/app/config/parameters.yml"
-alias wqa="cp /home/g1smo/Sredstva/wandera_qa.yml /home/g1smo/Projects/wandera/app/config/parameters.yml"
+alias wdev="cp /home/g1smo/Projects/w_params_dev.yml /home/g1smo/Projects/wandera/app/config/parameters.yml"
+alias wqa="cp /home/g1smo/Projects/w_params_qa.yml /home/g1smo/Projects/wandera/app/config/parameters.yml"
 
 # Reverse search shortcut
 bindkey '^R' history-incremental-pattern-search-backward
@@ -83,11 +83,10 @@ export PHP_INI_SCAN_DIR="/etc/php56/conf.d/"
 
 # NVM
 export NVM_DIR="/home/g1smo/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 alias invm="source /usr/share/nvm/init-nvm.sh"
 alias sc="chromium --force-device-scale-factor=1"
 
 # GTK interface scale
 export GDK_SCALE=1
 export GDK_DPI_SCALE=0.6
-
