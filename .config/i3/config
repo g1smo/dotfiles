@@ -9,13 +9,16 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
+
+# DPI scaling
+exec xrandr --dpi 180
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
 #font pango:Fira Code 10
-font pango:Cantarell 12
+font pango:Cantarell 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,24 +33,6 @@ font pango:Cantarell 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-#######################
-# i3 startup commands #
-#######################
-
-# Touchpad tap to click
-exec --no-startup-id xinput set-prop 14 292 1
-# Touchpad natural scrolling
-exec --no-startup-id xinput set-prop 14 280 1
-
-# Redshift (hello sleep)
-exec redshift-gtk
-
-# Background
-exec feh --bg-fill /home/g1smo/Pictures/kupka.jpg
-
-# Network manager applet
-exec nm-applet
 
 #########################
 # Various app shortcuts #
@@ -196,3 +181,27 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
+
+#######################
+# i3 startup commands #
+#######################
+
+# Touchpad tap to click
+#exec --no-startup-id xinput set-prop 14 292 1
+exec --no-startup-id xinput set-prop 13 280 1
+# Touchpad natural scrolling
+#exec --no-startup-id xinput set-prop 14 280 1
+exec --no-startup-id xinput set-prop 13 290 1
+
+# Transparency
+exec compton -b
+
+# Redshift (hello sleep)
+exec redshift-gtk
+
+# Background
+exec feh --bg-fill /home/g1smo/Pictures/kupka.jpg
+
+# Network manager applet
+exec nm-applet
