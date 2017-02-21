@@ -86,7 +86,12 @@ export NVM_DIR="/home/g1smo/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 alias invm="source /usr/share/nvm/init-nvm.sh"
 alias sc="chromium --force-device-scale-factor=1"
+alias el="HOME=~/Sredstva emacs"
 
 # GTK interface scale
-export GDK_SCALE=1
-export GDK_DPI_SCALE=0.6
+#export GDK_SCALE=1
+export GDK_DPI_SCALE=1
+export GDK_SCALE=1.66
+
+# PhantomJS binary location
+export PHANTOMJS_BIN=/usr/bin/phantomjs

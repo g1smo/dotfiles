@@ -37,13 +37,15 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
+     ;;helm
+     ivy
      auto-completion
-     ;;better-defaults
+     better-defaults
      emacs-lisp
      git
      markdown
      org
+     yaml
      ;; (shell :variables
      ;;       shell-default-height 30
      ;;       shell-default-position 'bottom)
@@ -65,14 +67,13 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
                                       editorconfig
-                                      ;;sublimity
+                                      sublimity
                                       all-the-icons
                                       all-the-icons-dired
-                                      yascroll
+                                      ;;yascroll
                                       solarized-theme
-                                      color-theme-solarized
-                                      color-theme-sanityinc-solarized
                                       zenburn-theme
+                                      suscolors-theme
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -147,10 +148,10 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          ;;zenburn
-                         solarized-light
+                         ;;solarized-light
                          ;;solarized-dark
-                         ;;sanityinc-solarized-light
                          ;;spacemacs-dark
+                         suscolors
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -159,10 +160,13 @@ values."
    dotspacemacs-default-font '(
                                ;;"Source Code Pro"
                                ;;"Fira Code Retina"
-                               "Fira Mono"
+                               "Fira Mono Medium"
+                               ;;"Inconsolata-g"
+                               ;;"Meslo LG M"
+                               ;;"Ubuntu Mono"
                                :size 24
-                               ;;:weight semibold
                                :weight semibold
+                               ;;:weight normal
                                :style medium
                                :width normal
                                :powerline-scale 1.0)
@@ -274,7 +278,8 @@ values."
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
-   dotspacemacs-smooth-scrolling t
+   ;;dotspacemacs-smooth-scrolling t
+   dotspacemacs-smooth-scrolling nil
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
@@ -334,9 +339,9 @@ you should place your code here."
   (editorconfig-mode t)
 
   ;; Smooth scrolling
-  ;;(use-package sublimity)
-  ;;(use-package sublimity-scroll)
-  ;;(sublimity-mode t)
+  (use-package sublimity)
+  (use-package sublimity-scroll)
+  (sublimity-mode t)
 
   ;; Quickly resize text
   (define-key global-map (kbd "C-+") 'text-scale-increase)
@@ -351,14 +356,17 @@ you should place your code here."
 
   ;;; scroll one line at a time (less "jumpy" than defaults)
   ;;(setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
-  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+  ;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
   ;;(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  ;;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  ;;(setq scroll-step 1)
+  (setq scroll-conservatively 10000)
+  (setq auto-window-vscroll nil)
 
   ;; Scrollbar
-  (use-package yascroll)
-  (global-yascroll-bar-mode t)
-  (setq yascroll:delay-to-hide nil)
+  ;;(use-package yascroll)
+  ;;(global-yascroll-bar-mode t)
+  ;;(setq yascroll:delay-to-hide nil)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -374,7 +382,7 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (tern request helm-core markdown-mode magit-popup git-commit yasnippet color-theme-solarized color-theme color-theme-sanityinc-solarized emacs-color-theme-solarized-theme bind-key all-the-icons highlight helm magit yaml-mode yascroll ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline solarized-theme smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pug-mode popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flycheck-elm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elm-mode elisp-slime-nav editorconfig dumb-jump drupal-mode define-word dactyl-mode company-web company-tern company-statistics column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (mwim color-theme-solarized-theme color-theme-solarized-light-theme wgrep smex ivy-hydra counsel-projectile counsel swiper ivy sublimity tern request helm-core markdown-mode magit-popup git-commit yasnippet color-theme-solarized color-theme color-theme-sanityinc-solarized emacs-color-theme-solarized-theme bind-key all-the-icons highlight helm magit yaml-mode yascroll ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline solarized-theme smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pug-mode popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flycheck-elm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elm-mode elisp-slime-nav editorconfig dumb-jump drupal-mode define-word dactyl-mode company-web company-tern company-statistics column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
