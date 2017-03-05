@@ -31,7 +31,6 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -57,6 +56,7 @@ values."
      php
      elm
      vimscript
+     python
 
      ;; Disable flychecker
      (syntax-checking :variables syntax-checking-enable-by-default nil)
@@ -339,9 +339,9 @@ you should place your code here."
   (editorconfig-mode t)
 
   ;; Smooth scrolling
-  (use-package sublimity)
-  (use-package sublimity-scroll)
-  (sublimity-mode t)
+  ;;(use-package sublimity)
+  ;;(use-package sublimity-scroll)
+  ;;(sublimity-mode t)
 
   ;; Quickly resize text
   (define-key global-map (kbd "C-+") 'text-scale-increase)
