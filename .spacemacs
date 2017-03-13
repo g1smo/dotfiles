@@ -36,7 +36,6 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;;helm
      ivy
      auto-completion
      better-defaults
@@ -56,6 +55,9 @@ values."
      php
      elm
      vimscript
+     clojure
+     sql
+     rust
      python
 
      ;; Disable flychecker
@@ -279,7 +281,7 @@ values."
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
    ;;dotspacemacs-smooth-scrolling t
-   dotspacemacs-smooth-scrolling nil
+   dotspacemacs-smooth-scrolling t
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
@@ -355,11 +357,11 @@ you should place your code here."
   (use-package all-the-icons-dired)
 
   ;;; scroll one line at a time (less "jumpy" than defaults)
-  ;;(setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
+  (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
   ;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
   ;;(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
   ;;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-  ;;(setq scroll-step 1)
+  (setq scroll-step 1)
   (setq scroll-conservatively 10000)
   (setq auto-window-vscroll nil)
 
@@ -367,6 +369,18 @@ you should place your code here."
   ;;(use-package yascroll)
   ;;(global-yascroll-bar-mode t)
   ;;(setq yascroll:delay-to-hide nil)
+
+  ;; Handlebars templates HTML major mode
+  (add-to-list 'auto-mode-alist '("\\.hbs$" . html-mode))
+
+  ;; Fancy clojure symbols
+  (setq clojure-enable-fancify-symbols t)
+
+  ;; Backup directory
+  (setq backup-directory-alist
+    `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+    `((".*" ,temporary-file-directory t)))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
