@@ -86,7 +86,11 @@ export NVM_DIR="/home/g1smo/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 alias invm="source /usr/share/nvm/init-nvm.sh"
 alias sc="chromium --force-device-scale-factor=1"
-alias el="HOME=~/Sredstva emacs"
+alias emacs-live="HOME=~/Sredstva/emacs-live emacs"
+alias offer-files="sudo python3 -m http.server 811"
+
+# RŠ aliasi
+alias omnom="ssh root@debeli"
 
 # GTK interface scale
 #export GDK_SCALE=1
@@ -95,3 +99,6 @@ export GDK_SCALE=1.66
 
 # PhantomJS binary location
 export PHANTOMJS_BIN=/usr/bin/phantomjs
+
+# RBEnv
+eval "$(rbenv init -)"
