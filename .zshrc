@@ -94,7 +94,7 @@ alias omnom="ssh root@debeli"
 
 # GTK interface scale
 #export GDK_SCALE=1
-export GDK_DPI_SCALE=1
+export GDK_DPI_SCALE=2
 export GDK_SCALE=1.66
 
 # PhantomJS binary location
