@@ -60,6 +60,9 @@ values."
      rust
      python
      ruby
+     floobits
+     scheme
+     latex
 
      ;; Disable flychecker
      (syntax-checking :variables syntax-checking-enable-by-default nil)
@@ -151,11 +154,11 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         ;;zenburn
-                         ;;solarized-light
-                         ;;solarized-dark
-                         ;;spacemacs-dark
                          suscolors
+                         solarized-light
+                         spacemacs-dark
+                         solarized-dark
+                         zenburn
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -163,12 +166,13 @@ values."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '(
                                ;;"Source Code Pro"
-                               ;;"Fira Code Retina"
-                               "Fira Mono Medium"
+                               ;;"Fira Code, Retina"
+                               "Fira Code Symbol"
+                               ;;"Fira Mono Medium"
                                ;;"Inconsolata-g"
                                ;;"Meslo LG M"
                                ;;"Ubuntu Mono"
-                               :size 24
+                               :size 18
                                :weight semibold
                                ;;:weight normal
                                :style medium
@@ -348,6 +352,9 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;; Emacspeak
+  ;;(load-file "~/Apps/emacspeak/lisp/emacspeak-setup.el")
+
   ;; EditorConfig support (minor mode)
   (use-package editorconfig)
   (editorconfig-mode t)
@@ -393,6 +400,16 @@ you should place your code here."
     `((".*" . ,temporary-file-directory)))
   (setq auto-save-file-name-transforms
     `((".*" ,temporary-file-directory t)))
+
+  ;; Orgmode line wrap
+  (setq org-startup-truncated t)
+
+
+;; Fira code stuff
+
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -402,13 +419,15 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(custom-safe-themes
    (quote
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (alert diminish clj-refactor paredit clojure-mode projectile with-editor rust-mode f rudel rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby winum unfill live-py-mode fuzzy flycheck-rust cider anaconda-mode company smartparens evil flycheck avy log4e hydra php-mode js2-mode mwim color-theme-solarized-theme color-theme-solarized-light-theme wgrep smex ivy-hydra counsel-projectile counsel swiper ivy sublimity tern request helm-core markdown-mode magit-popup git-commit yasnippet color-theme-solarized color-theme color-theme-sanityinc-solarized emacs-color-theme-solarized-theme bind-key all-the-icons highlight helm magit yaml-mode yascroll ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline solarized-theme smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pug-mode popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flycheck-elm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elm-mode elisp-slime-nav editorconfig dumb-jump drupal-mode define-word dactyl-mode company-web company-tern company-statistics column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (company-auctex auctex-latexmk auctex geiser floobits memoize guix zenburn-theme yapfify toml-mode sql-indent powerline racer pyvenv pytest pyenv-mode py-isort pip-requirements gntp skewer-mode simple-httpd json-snatcher json-reformat hy-mode parent-mode haml-mode gitignore-mode pos-tip flx iedit anzu goto-chg undo-tree cython-mode web-completion-data dash-functional company-anaconda clojure-snippets inflections edn multiple-cursors peg cider-eval-sexp-fu seq spinner queue pkg-info epl cargo bind-map packed async pythonic dash s font-lock+ auto-complete popup alert diminish clj-refactor paredit clojure-mode projectile with-editor rust-mode f rudel rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby winum unfill live-py-mode fuzzy flycheck-rust cider anaconda-mode company smartparens evil flycheck avy log4e hydra php-mode js2-mode mwim color-theme-solarized-theme color-theme-solarized-light-theme wgrep smex ivy-hydra counsel-projectile counsel swiper ivy sublimity tern request helm-core markdown-mode magit-popup git-commit yasnippet color-theme-solarized color-theme color-theme-sanityinc-solarized emacs-color-theme-solarized-theme bind-key all-the-icons highlight helm magit yaml-mode yascroll ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline solarized-theme smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pug-mode popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flycheck-elm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elm-mode elisp-slime-nav editorconfig dumb-jump drupal-mode define-word dactyl-mode company-web company-tern company-statistics column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

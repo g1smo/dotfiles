@@ -27,7 +27,7 @@ autoload colors zsh/terminfo
 colors
 # PATH additions
 export GOPATH=~/Sredstva/go
-export PATH="$PATH:/home/g1smo/bin:/home/g1smo/.gem/ruby/2.3.0/bin:$GOPATH/bin"
+export PATH="/home/g1smo/bin:$PATH:/home/g1smo/.gem/ruby/2.4.0/bin:$GOPATH/bin"
 
 # Default term (i3)
 export TERMINAL="gnome-terminal"
@@ -66,8 +66,8 @@ alias sf="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixels
 alias ff="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixelsPerPx\\\", \\\")[0-9\\.]+/\\11\.75/' {} + ; firefox"
 
 # Wandera env
-alias wdev="cp /home/g1smo/Projects/w_params_dev.yml /home/g1smo/Projects/wandera/app/config/parameters.yml"
-alias wqa="cp /home/g1smo/Projects/w_params_qa.yml /home/g1smo/Projects/wandera/app/config/parameters.yml"
+alias wdev="cp /home/g1smo/Projects/w_params_dev.yml /srv/http/portal/app/config/parameters.yml"
+alias wqa="cp /home/g1smo/Projects/w_params_qa.yml /srv/http/portal/app/config/parameters.yml"
 
 # Reverse search shortcut
 bindkey '^R' history-incremental-pattern-search-backward
@@ -82,12 +82,14 @@ export SAL_USE_VCLPLUGIN="gtk"
 export PHP_INI_SCAN_DIR="/etc/php56/conf.d/"
 
 # NVM
-export NVM_DIR="/home/g1smo/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-alias invm="source /usr/share/nvm/init-nvm.sh"
+#export NVM_DIR="/home/g1smo/.nvm"
+#[ -e /usr/share/nvm/init-nvm.sh ] && . /usr/share/nvm/init-nvm.sh
+alias invm=". /usr/share/nvm/init-nvm.sh"
 alias sc="chromium --force-device-scale-factor=1"
 alias emacs-live="HOME=~/Sredstva/emacs-live emacs"
 alias offer-files="sudo python3 -m http.server 811"
+# X on wayland
+alias wxon="xhost +local:"
 
 # RŠ aliasi
 alias omnom="ssh root@debeli"
@@ -95,10 +97,16 @@ alias omnom="ssh root@debeli"
 # GTK interface scale
 #export GDK_SCALE=1
 export GDK_DPI_SCALE=1
-export GDK_SCALE=1.66
+export GDK_SCALE=1
 
 # PhantomJS binary location
 export PHANTOMJS_BIN=/usr/bin/phantomjs
 
 # RBEnv
 eval "$(rbenv init -)"
+
+# Java fix?
+export NLS_LANG=American_America.UTF8
+
+# emacspeak speech server
+export DTK_PROGRAM=espeak
