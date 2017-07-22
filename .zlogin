@@ -23,3 +23,5 @@ if [ "$TERM" = "linux" ]; then
     echo -en "\e]PD6c71c4" # S_violet
     clear # against bg artifacts
 fi
+
+XDG_CONFIG_HOME="$HOME/.config"

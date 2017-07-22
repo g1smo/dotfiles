@@ -102,8 +102,11 @@ export GDK_SCALE=1
 # PhantomJS binary location
 export PHANTOMJS_BIN=/usr/bin/phantomjs
 
+# Guile deprecated warnings
+export GUILE_WARN_DEPRECATED="detailed"
+
 # RBEnv
-eval "$(rbenv init -)"
+command -v rbenv && eval "$(rbenv init -)"
 
 # Java fix?
 export NLS_LANG=American_America.UTF8
