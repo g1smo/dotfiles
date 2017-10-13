@@ -27,7 +27,7 @@ call plug#end()
 
 " Colorscheme "
 syntax on
-set background=light
+set background=dark
 colorscheme solarized
 
 " Tab settings, line numbering "

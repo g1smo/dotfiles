@@ -66,8 +66,9 @@ alias sf="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixels
 alias ff="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixelsPerPx\\\", \\\")[0-9\\.]+/\\11\.75/' {} + ; firefox"
 
 # Wandera env
-alias wdev="cp /home/g1smo/Projects/w_params_dev.yml /srv/http/portal/app/config/parameters.yml"
-alias wqa="cp /home/g1smo/Projects/w_params_qa.yml /srv/http/portal/app/config/parameters.yml"
+alias wdev="cp /home/g1smo/Projects/w_params_dev.yml /srv/http/portal/app/config/environment.yml"
+alias wqa="cp /home/g1smo/Projects/w_params_qa.yml /srv/http/portal/app/config/environment.yml"
+alias wfeat="cp /home/g1smo/Projects/w_params_feat.yml /srv/http/portal/app/config/environment.yml"
 
 # Reverse search shortcut
 bindkey '^R' history-incremental-pattern-search-backward
@@ -93,6 +94,12 @@ alias wxon="xhost +local:"
 
 # RŠ aliasi
 alias omnom="ssh root@debeli"
+
+# Dolzina mp3 fajlov
+alias mp3len="for i in \$(ls *.mp3); do echo \$i; soxi -d \$i; done"
+
+# Hiter ping za net preverit
+alias pg="ping 8.8.8.8"
 
 # GTK interface scale
 #export GDK_SCALE=1

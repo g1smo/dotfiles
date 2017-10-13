@@ -49,11 +49,10 @@ values."
      ;;       shell-default-position 'bottom)
      ;; spell-checking
      syntax-checking
-     ;; version-control
+     version-control
      html
      javascript
      php
-     elm
      vimscript
      clojure
      sql
@@ -63,6 +62,13 @@ values."
      floobits
      scheme
      latex
+     games
+
+     ;;(treemacs
+     ;; :variables
+     ;; treemacs-use-follow-mode t
+     ;; treemacs-use-filewatch-mode t
+     ;; treemacs-use-collapsed-directories 3)
 
      ;; Disable flychecker
      (syntax-checking :variables syntax-checking-enable-by-default nil)
@@ -81,6 +87,9 @@ values."
                                       zenburn-theme
                                       suscolors-theme
                                       rudel
+                                      dakrone-light-theme
+                                      tao-theme
+                                      gruvbox-theme
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -154,9 +163,14 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         gruvbox
+                         tao-yang
+                         tao-yin
                          suscolors
+                         dakrone-light
                          solarized-light
                          spacemacs-dark
+                         spacemacs-light
                          solarized-dark
                          zenburn
                          )
@@ -166,8 +180,8 @@ values."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '(
                                ;;"Source Code Pro"
-                               ;;"Fira Code, Retina"
-                               "Fira Code Symbol"
+                               ;;"Fira Code"
+                               "Fira Code, Retina"
                                ;;"Fira Mono Medium"
                                ;;"Inconsolata-g"
                                ;;"Meslo LG M"
@@ -404,35 +418,61 @@ you should place your code here."
   ;; Orgmode line wrap
   (setq org-startup-truncated t)
 
+  ;;; Prettify symbols
+  (setq prettify-symbols-unprettify-at-point t)
+
+  (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")
+
+  (defconst fira-code-font-lock-symbols-alist
+    (mapcar (lambda (s)
+              (cons (car s) (decode-char 'ucs (car (cdr s)))))
+            (list
+              '("www"                   #Xe100)
+              '(":::"                   #Xe10b)
+              '("::"                    #Xe10a)
+              '("->"                    #Xe114)
+              '("=>"                    #Xe13f)
+              '("!=="                   #Xe10f)
+              '("!="                    #Xe10e)
+              '("==="                   #Xe13d)
+              '("!=="                   #Xe10f)
+              '("=="                    #Xe13c)
+              '("&&"                    #Xe131)
+              '("||"                    #Xe132)
+              '("####"                  #Xe11d)
+              '("###"                   #Xe11c)
+              '("##"                    #Xe11b)
+              '("#"                     #Xe11e))))
+
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (dolist (alias fira-code-font-lock-symbols-alist)
+                (push alias prettify-symbols-alist))
+              (prettify-symbols-mode)))
 
 ;; Fira code stuff
 
-(set-language-environment "UTF-8")
-(set-default-coding-systems 'utf-8)
+;;(set-language-environment "UTF-8")
+;;(set-default-coding-systems 'utf-8)
 
 )
-
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
- '(custom-safe-themes
-   (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
- '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (company-auctex auctex-latexmk auctex geiser floobits memoize guix zenburn-theme yapfify toml-mode sql-indent powerline racer pyvenv pytest pyenv-mode py-isort pip-requirements gntp skewer-mode simple-httpd json-snatcher json-reformat hy-mode parent-mode haml-mode gitignore-mode pos-tip flx iedit anzu goto-chg undo-tree cython-mode web-completion-data dash-functional company-anaconda clojure-snippets inflections edn multiple-cursors peg cider-eval-sexp-fu seq spinner queue pkg-info epl cargo bind-map packed async pythonic dash s font-lock+ auto-complete popup alert diminish clj-refactor paredit clojure-mode projectile with-editor rust-mode f rudel rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby winum unfill live-py-mode fuzzy flycheck-rust cider anaconda-mode company smartparens evil flycheck avy log4e hydra php-mode js2-mode mwim color-theme-solarized-theme color-theme-solarized-light-theme wgrep smex ivy-hydra counsel-projectile counsel swiper ivy sublimity tern request helm-core markdown-mode magit-popup git-commit yasnippet color-theme-solarized color-theme color-theme-sanityinc-solarized emacs-color-theme-solarized-theme bind-key all-the-icons highlight helm magit yaml-mode yascroll ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline solarized-theme smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pug-mode popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flycheck-elm flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elm-mode elisp-slime-nav editorconfig dumb-jump drupal-mode define-word dactyl-mode company-web company-tern company-statistics column-enforce-mode coffee-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (tangotango-theme gruvbox-theme autothemer tao-theme all-the-icons treemacs-evil projectile magit-popup clojure-mode powerline flycheck git-commit simple-httpd smartparens evil helm-core js2-mode company magit tern counsel swiper helm ivy markdown-mode org-plus-contrib with-editor hydra cider dash window-purpose imenu-list ac-php-core xcscope treemacs-projectile treemacs pfuture dakrone-light-theme zenburn-theme yapfify yaml-mode ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill typit toml-mode toc-org tagedit symon suscolors-theme sudoku sublimity string-inflection sql-indent spaceline solarized-theme smex smeargle slim-mode scss-mode sayid sass-mode rvm rudel ruby-tools ruby-test-mode ruby-refactor rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode password-generator paradox pacmacs orgit org-projectile org-present org-pomodoro org-download org-bullets org-brain open-junk-file neotree mwim move-text mmm-mode minitest markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-purpose ivy-hydra info+ indent-guide impatient-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md geiser fuzzy flycheck-rust flycheck-pos-tip flx-ido floobits fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode diff-hl define-word dactyl-mode cython-mode counsel-projectile company-web company-tern company-statistics company-php company-auctex company-anaconda column-enforce-mode coffee-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby cargo bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk all-the-icons-dired aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ac-ispell 2048-game))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#d7af5f" :background "#262626"))))
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ )
+)
