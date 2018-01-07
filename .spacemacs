@@ -63,6 +63,7 @@ values."
      scheme
      latex
      games
+     react
 
      ;;(treemacs
      ;; :variables
@@ -121,7 +122,7 @@ values."
    ;; (default t)
    dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 15
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -163,10 +164,10 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         gruvbox
+                         suscolors
+                         ;;gruvbox-dark-medium
                          tao-yang
                          tao-yin
-                         suscolors
                          dakrone-light
                          solarized-light
                          spacemacs-dark
@@ -181,12 +182,13 @@ values."
    dotspacemacs-default-font '(
                                ;;"Source Code Pro"
                                ;;"Fira Code"
-                               "Fira Code, Retina"
-                               ;;"Fira Mono Medium"
+                               ;;"Fira Code, Retina"
+                               "Fira Mono Medium"
                                ;;"Inconsolata-g"
                                ;;"Meslo LG M"
                                ;;"Ubuntu Mono"
-                               :size 18
+                               ;;:size 18
+                               :size 23
                                :weight semibold
                                ;;:weight normal
                                :style medium
@@ -356,7 +358,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-)
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -455,12 +457,8 @@ you should place your code here."
 ;;(set-language-environment "UTF-8")
 ;;(set-default-coding-systems 'utf-8)
 
+  (add-to-list 'auto-mode-alist '("\\.js$" . react-mode))
 )
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -468,11 +466,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (tangotango-theme gruvbox-theme autothemer tao-theme all-the-icons treemacs-evil projectile magit-popup clojure-mode powerline flycheck git-commit simple-httpd smartparens evil helm-core js2-mode company magit tern counsel swiper helm ivy markdown-mode org-plus-contrib with-editor hydra cider dash window-purpose imenu-list ac-php-core xcscope treemacs-projectile treemacs pfuture dakrone-light-theme zenburn-theme yapfify yaml-mode ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill typit toml-mode toc-org tagedit symon suscolors-theme sudoku sublimity string-inflection sql-indent spaceline solarized-theme smex smeargle slim-mode scss-mode sayid sass-mode rvm rudel ruby-tools ruby-test-mode ruby-refactor rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode password-generator paradox pacmacs orgit org-projectile org-present org-pomodoro org-download org-bullets org-brain open-junk-file neotree mwim move-text mmm-mode minitest markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-purpose ivy-hydra info+ indent-guide impatient-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md geiser fuzzy flycheck-rust flycheck-pos-tip flx-ido floobits fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode diff-hl define-word dactyl-mode cython-mode counsel-projectile company-web company-tern company-statistics company-php company-auctex company-anaconda column-enforce-mode coffee-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby cargo bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk all-the-icons-dired aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ac-ispell 2048-game))))
+    (json-mode suscolors-theme yasnippet which-key undo-tree sql-indent rudel php-extras js2-mode ivy hydra evil-unimpaired diff-hl company-statistics coffee-mode auctex async aggressive-indent adaptive-wrap ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-)

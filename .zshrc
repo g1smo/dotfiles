@@ -59,6 +59,9 @@ alias grep="grep --color=auto"
 alias paclean="sudo pacman -R \$(pacman -Qdt | awk '{print \$1}')"
 alias ffon="sudo cp /etc/resolv.conf.ff /etc/resolv.conf"
 alias gitclean="git fetch -p && for branch in \$(git branch -vv | grep ': gone]' | gawk '{print \$1}'); do git branch -D \$branch; echo 'deleted \$branch'; done"
+alias llc="sshfs 10.0.0.203:/Users/g1smo/Projects/LickList ~/ll -oauto_cache,reconnect,no_readahead"
+alias llcc="sshfs 192.168.1.103:/Users/g1smo/Projects/LickList ~/ll -oauto_cache,reconnect,no_readahead"
+alias lld="sudo umount ~/ll"
 
 # Firefox scaling!
 # regular firefox
@@ -120,3 +123,9 @@ export NLS_LANG=American_America.UTF8
 
 # emacspeak speech server
 export DTK_PROGRAM=espeak
+
+# Android SDK && React Native build settings
+export ANDROID_HOME=/home/g1smo/Android/Sdk
+export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
