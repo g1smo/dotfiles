@@ -4,23 +4,13 @@ HISTSIZE=1000
 SAVEHIST=10000
 bindkey -v
 export KEYTIMEOUT=1
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
 zstyle :compinstall filename '/home/g1smo/.zshrc'
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/g1smo/.zshrc'
 
 export EDITOR="vim"
 export VISUAL="vim"
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
 
 # Color
 autoload colors zsh/terminfo
@@ -62,26 +52,19 @@ alias gitclean="git fetch -p && for branch in \$(git branch -vv | grep ': gone]'
 #alias llc="sshfs 10.0.0.203:/Users/g1smo/Projects/LickList ~/ll -oauto_cache,reconnect,no_readahead -o Ciphers=arcfour -o Compression=no"
 #alias llcc="sshfs 192.168.1.103:/Users/g1smo/Projects/LickList ~/ll -oauto_cache,reconnect,no_readahead"
 alias llc="sudo mount -t nfs 10.0.0.203:/Users/g1smo/Projects/LickList ~/ll"
-alias lld="sudo umount ~/ll"
+alias lld="sudo umount -l ~/ll"
 
 # Firefox scaling!
-# regular firefox
 alias sf="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixelsPerPx\\\", \\\")[0-9\\.]+/\\11\.00/' {} + ; firefox"
+# regular firefox
 alias ff="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixelsPerPx\\\", \\\")[0-9\\.]+/\\11\.75/' {} + ; firefox"
-
-# Wandera env
-alias wdev="cp /home/g1smo/Projects/w_params_dev.yml /srv/http/portal/app/config/environment.yml"
-alias wqa="cp /home/g1smo/Projects/w_params_qa.yml /srv/http/portal/app/config/environment.yml"
-alias wfeat="cp /home/g1smo/Projects/w_params_feat.yml /srv/http/portal/app/config/environment.yml"
 
 # Reverse search shortcut
 bindkey '^R' history-incremental-pattern-search-backward
 
-# Skype fix
-# export PULSE_LATENCY_MSEC=60
-
 # Xdebug
 export XDEBUG_CONFIG="idekey=xdebug remote_host=localhost remote_enable=1 remote_handler=dbgp remote_host=localhost remote_port=9001"
+
 export SCALA_HOME="/usr/share/scala"
 export SAL_USE_VCLPLUGIN="gtk"
 export PHP_INI_SCAN_DIR="/etc/php56/conf.d/"
@@ -114,9 +97,6 @@ export PHANTOMJS_BIN=/usr/bin/phantomjs
 
 # Guile deprecated warnings
 export GUILE_WARN_DEPRECATED="detailed"
-
-# RBEnv
-command -v rbenv && eval "$(rbenv init -)"
 
 # Java fix?
 export NLS_LANG=American_America.UTF8
