@@ -19,7 +19,8 @@ exec xrandr --dpi 180
 #font pango:monospace 8
 #font pango:Fira Code 10
 #font pango:Cantarell 10
-font pango:Fira Mono, Icons 9
+#font pango:Fira Mono, Icons 9
+font pango:Iosevka Medium 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -42,13 +43,17 @@ floating_modifier $mod
 # Small (non-scaled) chrome
 bindsym $mod+shift+w exec chromium --force-device-scale-factor=1
 # Increase volume
-bindsym $mod+shift+d exec "pamixer -i 5 && pkill -RTMIN+1 i3blocks"
-bindsym XF86AudioRaiseVolume exec "pamixer -i 5 && pkill -RTMIN+1 i3blocks"
+set $vol_sig_cmd pkill -RTMIN+10 i3blocks
+set $vol_down_cmd pamixer -d 5
+set $vol_up_cmd pamixer -i 5
+bindsym $mod+shift+d exec "$vol_up_cmd && $vol_sig_cmd"
+bindsym XF86AudioRaiseVolume exec "$vol_up_cmd && $vol_sig_cmd"
 # Decrease volume
-bindsym $mod+shift+s exec pamixer -d 5
-bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym $mod+shift+s exec "$vol_down_cmd && $vol_sig_cmd"
+bindsym XF86AudioLowerVolume exec "$vol_down_cmd && $vol_sig_cmd"
+
 # Mute
-bindsym XF86AudioMute exec pamixer -t
+bindsym XF86AudioMute exec "pamixer -t && $vol_sig_cmd"
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
@@ -62,6 +67,11 @@ bindsym $mod+Shift+q kill
 
 # start rofi (alt program launcher)
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi -config ~/.local/rofi/config"
+
+# Screen brightness
+set $brt_sig_cmd pkill -RTMIN+5 i3blocks
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10 && $brt_sig_cmd"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10 && $brt_sig_cmd"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -182,7 +192,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # External monitor
-bindsym $mod+o exec xrandr --output DP1 --auto --right-of eDP1 --pos 2440x0
+bindsym $mod+o exec xrandr --output DP1 --auto --right-of eDP1 && $set_bg
+bindsym $mod+shift+o exec xrandr --output HDMI2 --auto --right-of eDP1 && $set_bg
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -195,7 +206,9 @@ bar {
             statusline #DCDCDC
             focused_workspace #007c26 #005119 #fdf6e3
         }
-        font pango:Fira Mono, Icons 10
+        #font pango:Fira Mono, Icons 10
+        font pango:FontAwesome Regular 11, Iosevka Medium 11
+        #font pango:FontAwesome Regular 11
 }
 
 # Colors
@@ -222,7 +235,8 @@ exec compton -b
 exec redshift-gtk
 
 # Background
-exec feh --bg-fill ~/Pictures/wlp.jpg
+set $set_bg feh --bg-fill ~/Pictures/wlp.jpg
+exec $set_bg
 
 # Network manager applet
 exec nm-applet
