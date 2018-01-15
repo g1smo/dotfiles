@@ -98,13 +98,13 @@ bindsym $mod+a focus parent
 # name workspaces
 set $w1 λ
 set $w2 
-set $w3 
-set $w4 
-set $w5 𐄋
-set $w6 ⛧
-set $w7 🕎
+set $w3 
+set $w4 
+set $w5 
+set $w6 
+set $w7 ✭❀ヅ❤♫
 set $w8 ☭
-set $w9 🐲
+set $w9 ✡
 set $w0 ∞
 
 # switch to workspace
@@ -142,6 +142,7 @@ bindsym Mod1+Shift+j move workspace to output left
 assign [class="Firefox"] $w2
 assign [class="Chromium"] $w2
 assign [class="Lollypop"] $w3
+assign [class="Slack"] $w4
 exec firefox &
 exec chromium &
 exec lollypop &
@@ -199,7 +200,10 @@ bar {
         colors{
             background #232323
             statusline #DCDCDC
-            focused_workspace #007c26 #005119 #fdf6e3
+
+            #focused_workspace #007c26 #005119 #fdf6e3
+            focused_workspace #555555 #555555 #ffffff
+            inactive_workspace #232323 #232323 #888888
         }
         #font pango:Fira Mono, Icons 10
         font pango:FontAwesome Regular 11, Iosevka Medium 11
@@ -207,7 +211,8 @@ bar {
 }
 
 # Colors
-client.focused #003611 #003611 #ffffff #007c26 #003611
+#client.focused #003611 #003611 #ffffff #007c26 #003611
+client.focused #222222 #222222 #AAAAAA #B6B6B6 #555555
 
 
 #######################
