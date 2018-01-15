@@ -37,32 +37,32 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      ivy
      auto-completion
-     better-defaults
+     ;;better-defaults
      emacs-lisp
      git
      markdown
      org
-     yaml
+     ;;yaml
      ;; (shell :variables
      ;;       shell-default-height 30
      ;;       shell-default-position 'bottom)
-     ;; spell-checking
+     ;;spell-checking
      neotree
-     syntax-checking
+     ;;syntax-checking
      version-control
      html
      javascript
      php
-     vimscript
+     ;;vimscript
      clojure
      sql
-     rust
+     ;;rust
      python
-     ruby
+     ;;ruby
      floobits
      scheme
      latex
-     games
+     ;;games
      react
 
      ;;(treemacs
@@ -72,7 +72,7 @@ This function should only modify configuration layer settings."
      ;; treemacs-use-collapsed-directories 3)
 
      ;; Disable flychecker
-     (syntax-checking :variables syntax-checking-enable-by-default nil)
+     ;;(syntax-checking :variables syntax-checking-enable-by-default nil)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -169,8 +169,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(
-                         gruvbox-dark-medium
+   dotspacemacs-themes '(gruvbox-dark-medium
                          suscolors
                          tao-yang
                          tao-yin
@@ -179,8 +178,15 @@ It should only modify the values of Spacemacs settings."
                          spacemacs-dark
                          spacemacs-light
                          solarized-dark
-                         zenburn
-                         )
+                         zenburn)
+   ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
+   ;; `all-the-icons', `custom', `vim-powerline' and `vanilla'. The first three
+   ;; are spaceline themes. `vanilla' is default Emacs mode-line. `custom' is a
+   ;; user defined themes, refer to the DOCUMENTATION.org for more info on how
+   ;; to create your own spaceline theme.. (default 'spacemacs)
+   dotspacemacs-mode-line-theme 'vim-powerline
+   ;; If non-nil the cursor color matches the state color in GUI Emacs.
+   ;; (default t)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -195,7 +201,7 @@ It should only modify the values of Spacemacs settings."
                                :style medium
                                :width normal
                                :embolden t
-                               :powerline-scale 1.0)
+                               :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands `M-x' (after pressing on the leader key).
@@ -455,6 +461,9 @@ you should place your code here."
 
   ;; Use react mode instead of js2 mode
   (add-to-list 'auto-mode-alist '("\\.js$" . react-mode))
+
+  ;; All the icons modeline separator
+  ;;(setq spaceline-all-the-icons-separator-type 'arrow)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -464,4 +473,18 @@ you should place your code here."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (live-py-mode helm cider zenburn-theme yasnippet-snippets yapfify yaml-mode ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill typit toml-mode toc-org tao-theme tagedit symon suscolors-theme sudoku sublimity string-inflection sql-indent spaceline-all-the-icons solarized-theme smex smeargle slim-mode scss-mode sayid sass-mode rvm rudel ruby-tools ruby-test-mode ruby-refactor rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters racer queue pyvenv pytest pyenv-mode py-isort pug-mode popwin pippel pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode password-generator paradox pacmacs overseer orgit org-projectile org-present org-pomodoro org-download org-bullets org-brain open-junk-file neotree nameless mwim move-text mmm-mode minitest markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-purpose ivy-hydra info+ indent-guide importmagic impatient-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make helm-core gruvbox-theme google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md geiser fuzzy flycheck-rust flycheck-pos-tip flx-ido floobits fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode diminish diff-hl define-word dakrone-light-theme dactyl-mode cython-mode counsel-projectile counsel-css company-web company-tern company-statistics company-php company-auctex company-anaconda column-enforce-mode coffee-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby cargo bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ac-ispell 2048-game))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 )

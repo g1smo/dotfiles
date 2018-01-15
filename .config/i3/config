@@ -96,16 +96,16 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # name workspaces
-set $w1 λ
-set $w2 
-set $w3 
-set $w4 
-set $w5 
-set $w6 
-set $w7 ✭❀ヅ❤♫
-set $w8 ☭
-set $w9 ✡
-set $w0 ∞
+set $w1 1:λ
+set $w2 2:
+set $w3 3:
+set $w4 4:
+set $w5 5:
+set $w6 6:
+set $w7 7:✭❀ヅ❤♫
+set $w8 8:☭
+set $w9 9:✡
+set $w0 0:∞
 
 # switch to workspace
 bindsym $mod+1 workspace $w1
@@ -141,11 +141,14 @@ bindsym Mod1+Shift+j move workspace to output left
 # workspace bindings
 assign [class="Firefox"] $w2
 assign [class="Chromium"] $w2
-assign [class="Lollypop"] $w3
+assign [class="Gnote"] $w3
 assign [class="Slack"] $w4
+assign [class="Riot"] $w4
+assign [class="Lollypop"] $w5
 exec firefox &
 exec chromium &
 exec lollypop &
+exec riot &
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -197,7 +200,7 @@ bar {
         position top
         #status_command i3status
         status_command i3blocks
-        colors{
+        colors {
             background #232323
             statusline #DCDCDC
 
@@ -208,6 +211,7 @@ bar {
         #font pango:Fira Mono, Icons 10
         font pango:FontAwesome Regular 11, Iosevka Medium 11
         #font pango:FontAwesome Regular 11
+        strip_workspace_numbers yes
 }
 
 # Colors
