@@ -464,18 +464,4 @@ you should place your code here."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (zenburn-theme yasnippet-snippets chruby counsel helm org-plus-contrib magit magit-popup ghub cider clojure-mode yapfify yaml-mode ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill typit toml-mode toc-org tao-theme tagedit symon swiper suscolors-theme sudoku sublimity string-inflection sql-indent spaceline-all-the-icons solarized-theme smex smeargle slim-mode scss-mode sayid sass-mode rvm rudel ruby-tools ruby-test-mode ruby-refactor rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters racer queue pyvenv pytest pyenv-mode py-isort pug-mode popwin pippel pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode password-generator paradox pacmacs overseer orgit org-projectile org-present org-pomodoro org-download org-bullets org-brain open-junk-file neotree nameless mwim move-text mmm-mode minitest markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-purpose ivy-hydra info+ indent-guide importmagic impatient-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make helm-core gruvbox-theme google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md geiser fuzzy flycheck-rust flycheck-pos-tip flx-ido floobits fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode diminish diff-hl define-word dakrone-light-theme dactyl-mode cython-mode counsel-projectile counsel-css company-web company-tern company-statistics company-php company-auctex company-anaconda column-enforce-mode coffee-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode cider-eval-sexp-fu cargo bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ac-ispell 2048-game))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 )
