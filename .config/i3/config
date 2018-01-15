@@ -12,7 +12,7 @@
 set $mod Mod4
 
 # DPI scaling
-exec xrandr --dpi 180
+exec xrandr --dpi 166
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -95,29 +95,56 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# name workspaces
+set $w1 λ
+set $w2 
+set $w3 
+set $w4 
+set $w5 𐄋
+set $w6 ⛧
+set $w7 🕎
+set $w8 ☭
+set $w9 🐲
+set $w0 ∞
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w0
+
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w0
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+bindsym Mod1+Shift+colon move workspace to output right
+bindsym Mod1+Shift+ccaron move workspace to output right
+bindsym Mod1+Shift+j move workspace to output left
+
+# workspace bindings
+assign [class="Firefox"] $w2
+assign [class="Chromium"] $w2
+assign [class="Lollypop"] $w3
+exec firefox &
+exec chromium &
+exec lollypop &
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -155,8 +182,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # External monitor
-bindsym $mod+o exec xrandr --output DP1 --auto --right-of eDP1 && $set_bg
-bindsym $mod+shift+o exec xrandr --output HDMI2 --auto --right-of eDP1 && $set_bg
+bindsym $mod+o exec "killall compton && xrandr --output DP1 --auto --right-of eDP1 && $set_bg && compton -b"
+bindsym $mod+shift+o exec "xrandr --output DP1 off"
+bindsym $mod+p exec "killall compton && xrandr --output HDMI2 --auto --right-of eDP1 && $set_bg && compton -b"
+bindsym $mod+shift+p exec "xrandr --output HDMI2 --off"
 
 # Lock screen
 bindsym $mod+shift+b exec i3lock-wrapper
@@ -211,11 +240,11 @@ exec --no-startup-id $set_bg &
 exec nm-applet &
 
 # Keyboard layout
-exec_always "setxkbmap -layout us,si -option 'grp:alt_shift_toggle'"
+#exec_always "setxkbmap -layout us,si -option 'grp:alt_shift_toggle'"
 
 # gaps between windows
-gaps inner 5
-gaps outer 1
+gaps inner 13
+gaps outer 0
 smart_gaps on
 smart_borders on
 for_window [class="^.*"] border pixel 1 # No titles

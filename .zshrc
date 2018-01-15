@@ -88,10 +88,6 @@ alias mp3len="for i in \$(ls *.mp3); do echo \$i; soxi -d \$i; done"
 # Hiter ping za net preverit
 alias pg="ping 8.8.8.8"
 
-# GTK interface scale
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
-
 # PhantomJS binary location
 export PHANTOMJS_BIN=/usr/bin/phantomjs
 
