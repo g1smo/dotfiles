@@ -1,10 +1,79 @@
+!!! Scaling, fonts !!!
 Xft.dpi: 166
-#Xft.dpi: 210
+!Xft.dpi: 210
 Xft.autohint: 1
 Xft.lcdfilter:  lcddefault
-#Xft.hintstyle:  hintfull
-Xft.hintstyle:  hintslight
+Xft.hintstyle:  hintfull
+!Xft.hintstyle:  hintslight
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
-Xft.embolden: true
+!Xft.embolden: true
+
+!!! Solarized color theme !!!
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+*background:              S_base03
+*foreground:              S_base0
+!*fading:                  40
+!*fadeColor:               S_base03
+*cursorColor:             S_base1
+*pointerColorBackground:  S_base01
+*pointerColorForeground:  S_base1
+
+*color0:                  S_base02
+*color1:                  S_red
+*color2:                  S_green
+*color3:                  S_yellow
+*color4:                  S_blue
+*color5:                  S_magenta
+*color6:                  S_cyan
+*color7:                  S_base2
+*color9:                  S_orange
+*color8:                  S_base03
+*color10:                 S_base01
+*color11:                 S_base00
+*color12:                 S_base0
+*color13:                 S_violet
+*color14:                 S_base1
+*color15:                 S_base3
+
+!!! Urxvt options !!!
+! font
+URxvt*font: xft:Fira Mono Medium:size=10
+URxvt*letterSpace: -1
+! hide scrollbar
+URxvt*scrollBar: false
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+! secondary screen scrolling
+URxvt*secondaryScreen: 1
+URxvt*secondaryScroll: 0
+URxvt*secondaryWheel: 1
+! open URLs
+URxvt*perl-ext-common: default,matcher
+URxvt*url-launcher: /usr/bin/xdg-open
+URxvt*matcher.button: 1
+! transparency
+URxvt*depth: 32
+URxvt*background: [85]S_base03

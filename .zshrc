@@ -51,6 +51,7 @@ alias ffon="sudo cp /etc/resolv.conf.ff /etc/resolv.conf"
 alias gitclean="git fetch -p && for branch in \$(git branch -vv | grep ': gone]' | gawk '{print \$1}'); do git branch -D \$branch; echo 'deleted \$branch'; done"
 #alias llc="sshfs 10.0.0.203:/Users/g1smo/Projects/LickList ~/ll -oauto_cache,reconnect,no_readahead -o Ciphers=arcfour -o Compression=no"
 alias llc="sudo mount -t nfs -o noacl,nocto,rsize=32768,wsize=32768,noatime,nodiratime 10.0.0.203:/Users/g1smo/Projects/LickList ~/ll"
+alias llcc="sudo mount -t nfs -o noacl,nocto,rsize=32768,wsize=32768,noatime,nodiratime 192.168.8.102:/Users/g1smo/Projects/LickList ~/ll"
 alias lld="sudo umount -l ~/ll"
 
 # Firefox scaling!
