@@ -230,15 +230,9 @@ client.focused #222222 #222222 #AAAAAA #B6B6B6 #555555
 #######################
 
 # Touchpad tap to click
-#exec --no-startup-id xinput set-prop 14 292 1
-#exec --no-startup-id xinput set-prop 13 280 1
-exec --no-startup-id xinput set-prop 11 278 1
-#exec --no-startup-id xinput set-prop 12 296 1
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 # Touchpad natural scrolling
-#exec --no-startup-id xinput set-prop 14 280 1
-#exec --no-startup-id xinput set-prop 13 290 1
-exec --no-startup-id xinput set-prop 11 286 1
-#exec --no-startup-id xinput set-prop 12 278 1
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 
 # Autolock
 exec --no-startup-id xautolock -time 10 -locker 'i3lock-wrapper' &
