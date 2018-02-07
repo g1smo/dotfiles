@@ -76,4 +76,4 @@ URxvt*url-launcher: /usr/bin/xdg-open
 URxvt*matcher.button: 1
 ! transparency
 URxvt*depth: 32
-URxvt*background: [90]S_base03
+URxvt*background: [94]S_base03

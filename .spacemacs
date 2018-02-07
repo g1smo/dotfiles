@@ -60,6 +60,7 @@ This function should only modify configuration layer settings."
      floobits
      scheme
      latex
+     javascript
 
      ;; Disable flychecker
      (syntax-checking :variables syntax-checking-enable-by-default nil)
@@ -533,5 +534,4 @@ before packages are loaded."
   (setq web-mode-markup-indent-offset 2)
 )
 
-(defun dotspacemacs/emacs-custom-settings ()
-)
+(defun dotspacemacs/emacs-custom-settings ())
