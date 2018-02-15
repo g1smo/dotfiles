@@ -94,8 +94,12 @@ alias pg="ping 8.8.8.8"
 # PhantomJS binary location
 export PHANTOMJS_BIN=/usr/bin/phantomjs
 
-# Guile deprecated warnings
+# Guile things
 export GUILE_WARN_DEPRECATED="detailed"
+#export GUILE_LOAD_PATH=$HOME/.guix-profile/share/guile/site/2.2:$GUILE_LOAD_PATH
+#export GUILE_LOAD_COMPILED_PATH=$HOME/.guix-profile/lib/guile/2.2/site-ccache:$GUILE_LOAD_COMPILED_PATH
+
+
 
 # Java fix?
 export NLS_LANG=American_America.UTF8
