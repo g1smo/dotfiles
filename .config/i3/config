@@ -311,3 +311,6 @@ bindsym $mod+a exec emacs
 
 # Radio študent
 bindsym Mod1+Shift+r exec lollypop /home/g1smo/Music/radiostudent.m3u
+
+# Skrinšot
+bindsym 0xff61 exec gnome-screenshot -i
