@@ -247,8 +247,8 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Iosevka Medium"
-                               :size 25
-                               ;;:size 18
+                               ;;:size 25
+                               :size 21
                                :weight bold
                                :width normal
                                :powerline-scale 1.1)
@@ -586,7 +586,6 @@ before packages are loaded."
   ;; Use web mode for files ending in .tpl
   (add-to-list 'auto-mode-alist '("\\.tpl$" . web-mode))
 )
-
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use

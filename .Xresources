@@ -1,5 +1,5 @@
 !!! Scaling, fonts !!!
-Xft.dpi: 190
+Xft.dpi: 136
 Xft.autohint: 1
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
@@ -53,7 +53,8 @@ Xft.rgba: rgb
 
 !!! Urxvt options !!!
 ! font
-URxvt*font: xft:Fira Mono Medium:size=10,xft:Noto Emoji:size=10
+!URxvt*font: xft:Fira Mono Medium:size=10,xft:Noto Emoji:size=10
+URxvt*font: xft:Fira Mono Medium:size=8,xft:Noto Emoji:size=8
 ! Fix letter spacing; this is not needed in patched urxvt
 ! URxvt*letterSpace: -1
 ! hide scrollbar
