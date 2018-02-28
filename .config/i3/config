@@ -140,7 +140,6 @@ bindsym Mod1+Shift+j move workspace to output left
 
 # workspace bindings
 assign [class="Firefox"] $w2
-assign [class="Chromium"] $w2
 assign [class="Gnote"] $w9
 assign [class="Slack"] $w4
 assign [class="Riot"] $w4
@@ -234,6 +233,9 @@ exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapp
 # Touchpad natural scrolling
 exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 
+# Cursor acceleration
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 0.456
+
 # Autolock
 exec --no-startup-id xautolock -time 10 -locker 'i3lock-wrapper' &
 
@@ -286,7 +288,8 @@ bindsym XF86AudioLowerVolume exec "$vol_down_cmd && $vol_sig_cmd"
 bindsym XF86AudioMute exec "pamixer -t && $vol_sig_cmd"
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill

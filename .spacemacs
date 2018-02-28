@@ -527,8 +527,12 @@ before packages are loaded."
   (setq js-indent-level 4)
   (setq js2-indent-level 4)
 
+  ;; js2 globals
+  (setq js2-global-externs '("require" "process"))
+
   ;; Web mode indent level
-  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-markup-indent-offset 4)
+  (setq sgml-basic-offset 4)
 )
 
 (defun dotspacemacs/emacs-custom-settings ()
@@ -543,12 +547,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (web-mode paradox orgit nameless company counsel flycheck helm helm-core magit magit-popup ghub with-editor cider simple-httpd ivy zenburn-theme yasnippet-snippets yapfify ws-butler winum which-key wgrep web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tao-theme tagedit symon swiper suscolors-theme string-inflection spinner spaceline-all-the-icons solarized-theme smex smeargle slim-mode scss-mode sayid sass-mode rudel rjsx-mode restart-emacs request rainbow-delimiters queue pyvenv pytest pyenv-mode py-isort pug-mode popwin pippel pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el password-generator overseer org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-purpose ivy-hydra indent-guide importmagic impatient-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make gruvbox-theme google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md geiser fuzzy font-lock+ flycheck-pos-tip flx-ido floobits fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode diminish diff-hl define-word dakrone-light-theme cython-mode counsel-projectile counsel-css company-web company-tern company-statistics company-php company-auctex company-anaconda column-enforce-mode coffee-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk all-the-icons-dired aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
- '(safe-local-variable-values
-   (quote
-    ((cider-cljs-lein-repl . "(do (user/go) (user/cljs-repl))")
-     (cider-refresh-after-fn . "reloaded.repl/resume")
-     (cider-refresh-before-fn . "reloaded.repl/suspend")))))
+    (zenburn-theme yasnippet-snippets web-mode pyvenv overseer org-mime org-brain dumb-jump counsel-projectile counsel-css counsel swiper ace-link ac-php-core company smartparens flycheck helm helm-core ivy magit ghub yasnippet php-mode cider which-key exec-path-from-shell evil org-plus-contrib yapfify xcscope ws-butler winum wgrep web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree toc-org tao-theme tagedit symon suscolors-theme string-inflection spaceline-all-the-icons solarized-theme smex smeargle slim-mode scss-mode sayid sass-mode rudel rjsx-mode restart-emacs request rainbow-delimiters queue pytest pyenv-mode py-isort pug-mode popwin pippel pipenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el password-generator paradox orgit org-projectile org-present org-pomodoro org-download org-bullets open-junk-file neotree nameless move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-xref ivy-purpose ivy-hydra indent-guide importmagic impatient-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make gruvbox-theme goto-chg google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md geiser fuzzy font-lock+ flycheck-pos-tip flx-ido floobits fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emmet-mode elisp-slime-nav editorconfig drupal-mode diminish diff-hl define-word dakrone-light-theme cython-mode company-web company-tern company-statistics company-php company-auctex company-anaconda column-enforce-mode coffee-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile auctex-latexmk all-the-icons-dired aggressive-indent adaptive-wrap ace-window ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
