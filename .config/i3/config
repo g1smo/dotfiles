@@ -255,6 +255,9 @@ exec nm-applet &
 # Keyboard layout
 exec_always "setxkbmap -layout us,si -option 'grp:win_space_toggle'"
 
+# Caps lock as compose key!
+exec_always "setxkbmap -option compose:caps"
+
 # gaps between windows
 gaps inner 13
 gaps outer 0
