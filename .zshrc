@@ -20,7 +20,7 @@ export GOPATH=~/Sredstva/go
 export PATH="/home/g1smo/bin:$PATH:/home/g1smo/.gem/ruby/2.4.0/bin:$GOPATH/bin"
 
 # Default term (i3)
-export TERMINAL="gnome-terminal"
+export TERMINAL="termite"
 export TERM="xterm-256color"
 
 # Prompt
@@ -57,6 +57,7 @@ alias gitclean="git fetch -p && for branch in \$(git branch -vv | grep ': gone]'
 alias llc="sudo mount -t nfs -o noacl,nocto,rsize=32768,wsize=32768,noatime,nodiratime 10.0.0.203:/Users/g1smo/Projects/LickList ~/ll"
 alias llcc="sudo mount -t nfs -o noacl,nocto,rsize=32768,wsize=32768,noatime,nodiratime 192.168.8.103:/Users/g1smo/Projects/LickList ~/ll"
 alias lld="sudo umount -l ~/ll"
+alias sctl="systemctl"
 
 # Firefox scaling!
 alias sf="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixelsPerPx\\\", \\\")[0-9\\.]+/\\11\.00/' {} + ; firefox"

@@ -24,4 +24,4 @@ if [ "$TERM" = "linux" ]; then
     clear # against bg artifacts
 fi
 
-XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME="$HOME/.config"

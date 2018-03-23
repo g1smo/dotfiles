@@ -211,7 +211,6 @@ bar {
     }
     #font pango:Fira Mono, Icons 10
     font pango:FontAwesome Regular 11, Iosevka Medium 11
-    #font pango:FontAwesome Regular 11
     strip_workspace_numbers yes
     height 44
     tray_padding 2
@@ -306,8 +305,8 @@ bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -show combi -m
 
 # Screen brightness
 set $brt_sig_cmd pkill -RTMIN+5 i3blocks
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10 && $brt_sig_cmd"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10 && $brt_sig_cmd"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 8.333 -time 222 && $brt_sig_cmd"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 8.333 -time 222 && $brt_sig_cmd"
 
 # File manager
 bindsym Mod1+Shift+q exec nautilus

@@ -1,14 +1,11 @@
 !!! Scaling, fonts !!!
 Xft.dpi: 166
-!Xft.dpi: 210
 Xft.autohint: 1
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
-!Xft.hintstyle:  hintslight
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
-!Xft.embolden: true
 
 !!! Solarized color theme !!!
 #define S_yellow        #b58900
