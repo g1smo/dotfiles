@@ -188,11 +188,8 @@ bindsym $mod+r mode "resize"
 
 # External monitor
 set $restart_compton (killall compton && compton -b) || compton -b
-bindsym $mod+o exec xrandr --output DP1 --auto --right-of eDP1 && $set_bg && $restart_compton
-#bindsym $mod+o exec xrandr --output DP1 --scale 1.25x1.25 --panning 2400x1350+2560+0 --fb 4960x1440 --right-of eDP1 && $set_bg && $restart_compton
-bindsym $mod+Shift+o exec xrandr --output DP1 --off && $restart_compton
-bindsym $mod+p exec xrandr --output HDMI2 --auto --right-of eDP1 && $set_bg && $restart_compton
-bindsym $mod+Shift+p exec xrandr --output HDMI2 --off && $restart_compton
+bindsym $mod+p exec xrandr --output HDMI-1 --auto --right-of eDP-1 && $set_bg && $restart_compton
+bindsym $mod+Shift+p exec xrandr --output HDMI-1 --off && $restart_compton
 
 # Lock screen
 bindsym $mod+shift+b exec i3lock-next
@@ -305,8 +302,9 @@ bindsym $mod+Ctrl+q exec --no-startup-id "xterm -e xkill"
 bindsym $mod+d exec --no-startup-id "rofi -combi-modi window,drun -show combi -modi combi -config ~/.local/rofi/config"
 
 # Screen brightness
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 8.333 -time 222 && $brt_sig_cmd"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 8.333 -time 222 && $brt_sig_cmd"
+set $brt_sig_cmd pkill -RTMIN+5 i3blocks
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 8.333 -time 222 -steps 5 && $brt_sig_cmd"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 8.333 -time 222 -steps 5 && $brt_sig_cmd"
 
 # File manager
 bindsym Mod1+Shift+q exec nautilus
