@@ -1,5 +1,5 @@
 !!! Scaling, fonts !!!
-Xft.dpi: 166
+Xft.dpi: 210
 Xft.autohint: 1
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull

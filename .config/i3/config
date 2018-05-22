@@ -12,7 +12,7 @@
 set $mod Mod4
 
 # DPI scaling
-exec xrandr --dpi 166
+exec xrandr --dpi 210
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -20,7 +20,7 @@ exec xrandr --dpi 166
 #font pango:Fira Code 10
 #font pango:Cantarell 10
 #font pango:Fira Mono, Icons 9
-font pango:Iosevka Medium 10
+font pango:Iosevka Medium 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -210,10 +210,10 @@ bar {
         inactive_workspace #232323 #232323 #888888
     }
     #font pango:Fira Mono, Icons 10
-    font pango:FontAwesome Regular 11, Iosevka Medium 11
+    font pango:FontAwesome Regular 9, Iosevka Medium 9
     strip_workspace_numbers yes
     height 44
-    tray_padding 2
+    tray_padding 1
 }
 
 # Colors
@@ -258,7 +258,7 @@ exec_always "setxkbmap -layout us,si -option 'grp:win_space_toggle'"
 exec_always "setxkbmap -option compose:caps"
 
 # gaps between windows
-gaps inner 13
+gaps inner 9
 gaps outer 0
 smart_gaps on
 #smart_borders on
