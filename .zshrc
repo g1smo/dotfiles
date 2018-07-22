@@ -54,8 +54,8 @@ alias pacsize="expac -H M '%m\t%n' | sort -h"
 alias ffon="sudo cp /etc/resolv.conf.ff /etc/resolv.conf"
 alias gitclean="git fetch -p && for branch in \$(git branch -vv | grep ': gone]' | gawk '{print \$1}'); do git branch -D \$branch; echo 'deleted \$branch'; done"
 #alias llc="sshfs 10.0.0.203:/Users/g1smo/Projects/LickList ~/ll -oauto_cache,reconnect,no_readahead -o Ciphers=arcfour -o Compression=no"
-alias llc="sudo mount -t nfs -o noacl,nocto,rsize=32768,wsize=32768,noatime,nodiratime 10.0.0.203:/Users/g1smo/Projects/LickList ~/ll"
-alias llcc="sudo mount -t nfs -o noacl,nocto,rsize=32768,wsize=32768,noatime,nodiratime 192.168.8.106:/Users/g1smo/Projects/LickList ~/ll"
+alias llc="sudo mount -t nfs -v -o noacl,nocto,rsize=32768,wsize=32768,noatime,nodiratime 10.0.0.195:/Users/g1smo/Projects/LickList ~/ll"
+alias llcc="sudo mount -t nfs -o noacl,nocto,rsize=32768,wsize=32768,noatime,nodiratime 192.168.8.104:/Users/g1smo/Projects/LickList ~/ll"
 alias lld="sudo umount -l ~/ll"
 alias sctl="systemctl"
 
@@ -114,3 +114,13 @@ export ANDROID_HOME=/home/g1smo/Android/Sdk
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
+# Guix!
+export GUIX_PROFILE="$HOME/.guix-profile"
+export GUIX_PROFILE_FILE="$HOME/.guix-profile/etc/profile"
+[ -e $GUIX_PROFILE_FILE ] && source $GUIX_PROFILE_FILE
+export GUIX_PACKAGE_PATH="$HOME/Projects/guix-packages"
+export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
+export SSL_CERT_DIR="$GUIX_PROFILE/etc/ssl/certs"
+export SSL_CERT_FILE="$SSL_CERT_DIR/ca-certificates.crt"
+#export GIT_SSL_CAINFO="$SSL_CERT_FILE"
+export CURL_CA_BUNDLE="$SSL_CERT_FILE"
