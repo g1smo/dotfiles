@@ -17,7 +17,7 @@ autoload colors zsh/terminfo
 colors
 # PATH additions
 export GOPATH=~/Sredstva/go
-export PATH="/home/g1smo/bin:$PATH:/home/g1smo/.gem/ruby/2.4.0/bin:$GOPATH/bin"
+export PATH="/home/g1smo/bin:$PATH:/home/g1smo/.gem/ruby/2.5.0/bin:$GOPATH/bin"
 
 # Default term (i3)
 export TERMINAL="termite"
@@ -92,6 +92,9 @@ alias mp3len="for i in \$(ls *.mp3); do echo \$i; soxi -d \$i; done"
 
 # Hiter ping za net preverit
 alias pg="ping 8.8.8.8"
+
+# Najvecji fajli
+alias najvecji="find . -printf '%s %p\n'| sort -nr | head -30"
 
 # PhantomJS binary location
 export PHANTOMJS_BIN=/usr/bin/phantomjs

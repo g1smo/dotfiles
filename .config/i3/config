@@ -12,7 +12,7 @@
 set $mod Mod4
 
 # DPI scaling
-exec xrandr --dpi 210
+exec xrandr --dpi 190
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -189,6 +189,7 @@ bindsym $mod+r mode "resize"
 # External monitor
 set $restart_compton (killall compton && compton -b) || compton -b
 bindsym $mod+o exec xrandr --output DP1 --auto --right-of eDP1 && $set_bg && $restart_compton
+#bindsym $mod+o exec xrandr --output DP1 --scale 1.25x1.25 --panning 2400x1350+2560+0 --fb 4960x1440 --right-of eDP1 && $set_bg && $restart_compton
 bindsym $mod+Shift+o exec xrandr --output DP1 --off && $restart_compton
 bindsym $mod+p exec xrandr --output HDMI2 --auto --right-of eDP1 && $set_bg && $restart_compton
 bindsym $mod+Shift+p exec xrandr --output HDMI2 --off && $restart_compton
@@ -252,11 +253,8 @@ exec --no-startup-id $set_bg &
 # Network manager applet
 exec nm-applet &
 
-# Keyboard layout
-exec_always "setxkbmap -layout us,si -option 'grp:win_space_toggle'"
-
-# Caps lock as compose key!
-exec_always "setxkbmap -option compose:caps"
+# Keyboard layout, caps lock as compose key
+exec_always --no-startup-id "setxkbmap -layout us,si -option grp:alt_shift_toggle -option compose:caps"
 
 # gaps between windows
 gaps inner 9
@@ -322,3 +320,6 @@ bindsym Mod1+Shift+y exec playerctl play-pause
 
 # Skrinšot
 bindsym 0xff61 exec gnome-screenshot -i
+
+# Keyring related
+exec --no-startup-id /usr/share/gnome-settings-daemon

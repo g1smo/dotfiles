@@ -25,3 +25,6 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 export XDG_CONFIG_HOME="$HOME/.config"
+#export GDK_SCALE=2
+export GDK_DPI_SCALE=0.8
+export GUIX_GITHUB_TOKEN="22b00f8346ae4c2f4795cc6c6b346516bb43a619"
