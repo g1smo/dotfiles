@@ -111,7 +111,7 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 # Guix!
 export GUIX_PROFILE="$HOME/.guix-profile"
-export GUIX_PROFILE_FILE="$HOME/.guix-profile/etc/profile"
+export GUIX_PROFILE_FILE="$GUIX_PROFILE/etc/profile"
 [ -e $GUIX_PROFILE_FILE ] && source $GUIX_PROFILE_FILE
 export GUIX_PACKAGE_PATH="$HOME/Projects/guix-packages"
 export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
