@@ -215,7 +215,7 @@ bar {
     strip_workspace_numbers yes
     height 46
     tray_padding 2
-    output eDP1
+    #output eDP1
 }
 
 # Colors
@@ -254,7 +254,7 @@ exec --no-startup-id $set_bg &
 exec nm-applet &
 
 # Keyboard layout, caps lock as compose key
-exec_always --no-startup-id "setxkbmap -layout us,si -option grp:alt_shift_toggle -option compose:caps"
+exec_always --no-startup-id "setxkbmap -layout us,si -option grp:shifts_toggle -option compose:caps"
 
 # gaps between windows
 gaps inner 9
