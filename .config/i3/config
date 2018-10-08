@@ -198,7 +198,6 @@ bindsym $mod+shift+b exec i3lock-next
 # finds out, if available)
 bar {
     position top
-    #status_command i3status
     status_command i3blocks
     colors {
         background #232323
@@ -208,11 +207,10 @@ bar {
         inactive_workspace #232323 #232323 #888888
     }
     #font pango:Fira Mono, Icons 10
-    font pango:FontAwesome Regular 9, Iosevka Medium 9
+    font pango:FontAwesome Regular 10, Iosevka Medium 10
     strip_workspace_numbers yes
     height 36
     tray_padding 2
-    #output eDP1
 }
 
 # Colors
