@@ -21,7 +21,7 @@ font pango:Iosevka Medium 9
 set $menu compgen -c | sort -u | fzf | xargs -r swaymsg -t command exec
 
 output eDP-1 resolution 2440x1440 scale 2
-output "*" background /home/g1smo/wlp.jpg fill
+output "*" background ~/Pictures/wlp.jpg fill
 
 # start a terminal
 bindsym $mod+Return exec $term
@@ -127,8 +127,8 @@ assign [class="Transmission"] $w3
 assign [class="Nicotine+"] $w3
 
 # Program startup
-exec firefox &
-exec lollypop &
+#exec firefox &
+#exec lollypop &
 
 
 
@@ -211,7 +211,7 @@ bar {
     font pango:FontAwesome Regular 9, Iosevka Medium 9
     strip_workspace_numbers yes
     height 18
-    tray_padding 2
+    #tray_padding 2
 }
 
 include /etc/sway/config.d/*
