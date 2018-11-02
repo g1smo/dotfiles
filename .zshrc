@@ -43,8 +43,6 @@ alias ls='ls --color=auto'
 #alias vim='TERM=xterm-256color vim'
 alias vi='vim'
 alias apachelog="gnome-terminal -e \"tail -f /var/log/httpd/error_log\""
-alias nvidiaoff="sudo modprobe -r nvidia_drm nvidia_modeset nvidia-uvm nvidia; sudo tee /proc/acpi/bbswitch <<<OFF"
-#alias nvidiaoff="sudo tee /sys/kernel/debug/vgaswitcheroo/switch <<<OFF"
 alias sudo="sudo "
 alias grep="grep --color=auto"
 # Remove not-required-anymore packages
@@ -53,10 +51,6 @@ alias paclean="sudo pacman -R \$(pacman -Qdt | awk '{print \$1}')"
 alias pacsize="expac -H M '%m\t%n' | sort -h"
 alias ffon="sudo cp /etc/resolv.conf.ff /etc/resolv.conf"
 alias gitclean="git fetch -p && for branch in \$(git branch -vv | grep ': gone]' | gawk '{print \$1}'); do git branch -D \$branch; echo 'deleted \$branch'; done"
-#alias llc="sshfs 10.0.0.203:/Users/g1smo/Projects/LickList ~/ll -oauto_cache,reconnect,no_readahead -o Ciphers=arcfour -o Compression=no"
-alias llc="sudo mount -t nfs -v -o noacl,nocto,rsize=32768,wsize=32768,noatime,nodiratime 10.0.0.195:/Users/g1smo/Projects/LickList ~/ll"
-alias llcc="sudo mount -t nfs -o noacl,nocto,rsize=32768,wsize=32768,noatime,nodiratime 192.168.8.104:/Users/g1smo/Projects/LickList ~/ll"
-alias lld="sudo umount -l ~/ll"
 alias sctl="systemctl"
 
 # Firefox scaling!
@@ -67,12 +61,8 @@ alias ff="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixels
 # Reverse search shortcut
 bindkey '^R' history-incremental-pattern-search-backward
 
-# Xdebug
-export XDEBUG_CONFIG="idekey=xdebug remote_host=localhost remote_enable=1 remote_handler=dbgp remote_host=localhost remote_port=9001"
-
 export SCALA_HOME="/usr/share/scala"
 export SAL_USE_VCLPLUGIN="gtk"
-export PHP_INI_SCAN_DIR="/etc/php56/conf.d/"
 
 # NVM
 #export NVM_DIR="/home/g1smo/.nvm"
@@ -123,7 +113,7 @@ export GUIX_PROFILE_FILE="$HOME/.guix-profile/etc/profile"
 [ -e $GUIX_PROFILE_FILE ] && source $GUIX_PROFILE_FILE
 export GUIX_PACKAGE_PATH="$HOME/Projects/guix-packages"
 export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
-export SSL_CERT_DIR="$GUIX_PROFILE/etc/ssl/certs"
-export SSL_CERT_FILE="$SSL_CERT_DIR/ca-certificates.crt"
+#export SSL_CERT_DIR="$GUIX_PROFILE/etc/ssl/certs"
+#export SSL_CERT_FILE="$SSL_CERT_DIR/ca-certificates.crt"
 #export GIT_SSL_CAINFO="$SSL_CERT_FILE"
-export CURL_CA_BUNDLE="$SSL_CERT_FILE"
+#export CURL_CA_BUNDLE="$SSL_CERT_FILE"
