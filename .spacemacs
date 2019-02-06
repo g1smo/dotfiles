@@ -66,6 +66,7 @@ This function should only modify configuration layer settings."
      docker
      sql
      nginx
+     coffeescript
 
      ;; Disable flychecker
      (syntax-checking :variables syntax-checking-enable-by-default nil)
@@ -99,7 +100,9 @@ This function should only modify configuration layer settings."
                                       vue-mode
                                       extempore-mode
                                       haskell-mode
-                                      tidal)
+                                      tidal
+                                      htmlize
+                                      fireplace)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -249,8 +252,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Iosevka Medium"
-                               ;;:size 25
-                               :size 20
+                               :size 19
                                :weight bold
                                :width normal
                                :powerline-scale 1.1)
@@ -571,15 +573,15 @@ before packages are loaded."
   (setq js2-strict-missing-semi-warning nil)
 
   ;; js default indent level
-  (setq js-indent-level 4)
-  (setq js2-indent-level 4)
+  (setq js-indent-level 2)
+  (setq js2-indent-level 2)
 
   ;; js2 globals
   (setq js2-global-externs '("require" "process"))
 
   ;; Web mode indent level
-  (setq web-mode-markup-indent-offset 4)
-  (setq sgml-basic-offset 4)
+  (setq web-mode-markup-indent-offset 2)
+  (setq sgml-basic-offset 2)
 
   ;; Word wrap orgmode
   (add-hook 'org-mode-hook #'(lambda ()
@@ -587,7 +589,12 @@ before packages are loaded."
 
   ;; Use web mode for files ending in .tpl
   (add-to-list 'auto-mode-alist '("\\.tpl$" . web-mode))
+
+  ;; Agenda fajli
+  (setq org-agenda-files
+        (file-expand-wildcards "~/Documents/*.org"))
 )
+
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
@@ -600,7 +607,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (zenburn-theme yasnippet-snippets tao-theme sql-indent solarized-theme hl-todo highlight-numbers guix gruvbox-theme evil-surround evil-matchit editorconfig dumb-jump doom-modeline docker counsel-projectile company-php aggressive-indent ace-window cider sesman anaconda-mode company counsel swiper flycheck helm ivy avy alert projectile magit git-commit with-editor yasnippet org-plus-contrib yapfify yaml-mode ws-butler winum which-key wgrep web-mode web-beautify vue-mode volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package toc-org tidal tagedit tablist symon suscolors-theme string-inflection spaceline-all-the-icons smex smeargle slim-mode shrink-path seeing-is-believing scss-mode sass-mode rvm rudel ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe rjsx-mode restart-emacs request rbenv rake rainbow-delimiters queue pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode password-generator parent-mode paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-restclient ob-http nginx-mode neotree nameless move-text minitest markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum log4e livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra indent-guide importmagic impatient-mode hungry-delete highlight-parentheses highlight-indentation helm-make helm-core google-translate golden-ratio gnuplot gntp gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ghub gh-md geiser fuzzy font-lock+ flycheck-pos-tip flx-ido floobits fill-column-indicator fancy-battery eyebrowse extempore-mode expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-org evil-numbers evil-nerd-commenter evil-mc evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emmet-mode elisp-slime-nav eldoc-eval drupal-mode dotenv-mode dockerfile-mode docker-tramp diminish diff-hl define-word dakrone-light-theme cython-mode counsel-css company-web company-tern company-statistics company-restclient company-auctex company-anaconda column-enforce-mode clojure-snippets clojure-mode clojure-cheatsheet clean-aindent-mode cider-eval-sexp-fu chruby centered-cursor-mode bundler bui browse-at-remote autothemer auto-yasnippet auto-highlight-symbol auto-compile all-the-icons-dired ace-link ac-php-core ac-ispell))))
+    (zenburn-theme yasnippet-snippets wgrep web-mode tidal tao-theme sql-indent solarized-theme ruby-hash-syntax rspec-mode rjsx-mode request pyvenv phpcbf orgit org-projectile org-download org-brain live-py-mode ivy-hydra hl-todo highlight-indentation guix bui gruvbox-theme google-translate git-timemachine geiser eyebrowse evil-visual-mark-mode evil-surround evil-nerd-commenter evil-matchit evil-magit evil-goggles editorconfig dumb-jump doom-modeline eldoc-eval docker json-mode tablist diff-hl define-word cython-mode counsel-projectile cider-eval-sexp-fu eval-sexp-fu cider clojure-mode browse-at-remote auto-yasnippet auto-compile aggressive-indent ace-window ace-link anaconda-mode ac-php-core company counsel swiper smartparens flycheck projectile helm helm-core window-purpose imenu-list ivy avy magit magit-popup git-commit markdown-mode restclient php-mode f inf-ruby simple-httpd spaceline powerline dash async evil goto-chg org-plus-contrib hydra yapfify yaml-mode xcscope ws-butler writeroom-mode with-editor winum which-key web-beautify vue-mode volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package undo-tree treepy toc-org tagedit symon suscolors-theme string-inflection spaceline-all-the-icons smex smeargle slim-mode shrink-path sesman seeing-is-believing scss-mode sass-mode rvm rudel ruby-tools ruby-test-mode ruby-refactor rubocop robe restart-emacs rbenv rake rainbow-delimiters queue pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements phpunit php-extras php-auto-yasnippets persp-mode password-generator paradox packed overseer org-present org-pomodoro org-mime org-category-capture org-bullets open-junk-file ob-restclient ob-http ob-coffeescript nginx-mode neotree nameless move-text minitest markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode link-hint json-snatcher json-reformat json-navigator js2-refactor js-doc ivy-yasnippet ivy-xref ivy-purpose indent-guide importmagic impatient-mode hungry-delete highlight-parentheses highlight-numbers helm-make haskell-mode graphql golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flycheck-pos-tip flx-ido floobits fireplace fill-column-indicator fancy-battery extempore-mode expand-region evil-visualstar evil-unimpaired evil-tutor evil-org evil-numbers evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu emmet-mode elisp-slime-nav drupal-mode dotenv-mode dockerfile-mode docker-tramp diminish dakrone-light-theme counsel-css company-web company-tern company-statistics company-restclient company-php company-auctex company-anaconda column-enforce-mode coffee-mode clojure-snippets clean-aindent-mode chruby centered-cursor-mode bundler autothemer auto-highlight-symbol all-the-icons-dired ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

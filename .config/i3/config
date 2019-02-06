@@ -12,7 +12,7 @@
 set $mod Mod4
 
 # DPI scaling
-exec xrandr --dpi 136
+exec xrandr --dpi 166
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -20,7 +20,7 @@ exec xrandr --dpi 136
 #font pango:Fira Code 10
 #font pango:Cantarell 10
 #font pango:Fira Mono, Icons 9
-font pango:Iosevka Medium 9
+font pango:Iosevka Medium 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -96,16 +96,16 @@ bindsym $mod+Shift+a focus parent
 #bindsym $mod+d focus child
 
 # name workspaces
-set $w1 1:λ
-set $w2 2:
-set $w3 3:
+set $w0 0:
+set $w1 1:
+set $w2 2:
+set $w3 3:
 set $w4 4:
-set $w5 5:✡
+set $w5 5:✡
 set $w6 6:
-set $w7 7:✭❀ヅ❤♫
+set $w7 7:
 set $w8 8:☭
 set $w9 9:
-set $w0 0:∞
 
 # switch to workspace
 bindsym $mod+1 workspace $w1
@@ -139,17 +139,13 @@ bindsym Mod1+Shift+ccaron move workspace to output right
 bindsym Mod1+Shift+j move workspace to output left
 
 # workspace bindings
-assign [class="Firefox"] $w2
-assign [class="Gnote"] $w9
+assign [class="Thunderbird"] $w3
 assign [class="Slack"] $w4
 assign [class="Riot"] $w4
-assign [class="Lollypop"] $w3
-assign [class="Transmission"] $w3
-assign [class="Nicotine+"] $w3
+assign [class="Lollypop"] $w7
 
 # Program startup
-exec firefox &
-exec lollypop &
+exec thunderbird &
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -199,6 +195,7 @@ bindsym $mod+shift+b exec i3lock-next
 bar {
     position top
     status_command i3blocks
+    #status_command i3bar
     colors {
         background #232323
         statusline #DCDCDC
@@ -207,9 +204,10 @@ bar {
         inactive_workspace #232323 #232323 #888888
     }
     #font pango:Fira Mono, Icons 10
-    font pango:FontAwesome Regular 10, Iosevka Medium 10
+    #font pango:Iosevka Medium 10
+    font pango: Iosevka Medium 8
     strip_workspace_numbers yes
-    height 36
+    height 34
     tray_padding 2
 }
 
@@ -251,7 +249,8 @@ exec --no-startup-id $set_bg &
 exec nm-applet &
 
 # Keyboard layout, caps lock as compose key
-exec_always --no-startup-id "setxkbmap -layout us,si -option grp:lctrl_lwin_toggle -option compose:caps"
+#exec_always --no-startup-id "setxkbmap -layout us,si -option grp:lctrl_lwin_toggle -option compose:caps"
+exec_always --no-startup-id "setxkbmap -layout us,si -option grp:win_space_toggle -option compose:caps"
 
 # gaps between windows
 gaps inner 7
@@ -287,7 +286,7 @@ bindsym XF86AudioMute exec "pamixer -t && $vol_sig_cmd"
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec "termite -t konz0l"
 
 # kill focused window
 bindsym $mod+Shift+q kill

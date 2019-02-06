@@ -17,7 +17,7 @@ autoload colors zsh/terminfo
 colors
 # PATH additions
 export GOPATH=~/Sredstva/go
-export PATH="/home/g1smo/bin:$PATH:/home/g1smo/.gem/ruby/2.5.0/bin:$GOPATH/bin"
+export PATH="/home/g1smo/bin:/home/g1smo/.gem/ruby/2.5.0/bin:$GOPATH/bin:$PATH"
 
 # Default term (i3)
 export TERMINAL="termite"
@@ -70,7 +70,7 @@ export SAL_USE_VCLPLUGIN="gtk"
 alias invm=". /usr/share/nvm/init-nvm.sh"
 alias sc="chromium --force-device-scale-factor=1"
 alias emacs-live="HOME=~/Sredstva/emacs-live emacs"
-alias offer-files="sudo python3 -m http.server 811"
+alias offer-files="python3 -m http.server"
 # X on wayland
 alias wxon="xhost +local:"
 
@@ -92,11 +92,9 @@ export PHANTOMJS_BIN=/usr/bin/phantomjs
 # Guile things
 export GUILE_WARN_DEPRECATED="detailed"
 
-# Guix things
+# Guix guile things
 export GUILE_LOAD_PATH=$HOME/.guix-profile/share/guile/site/2.2:$GUILE_LOAD_PATH
 export GUILE_LOAD_COMPILED_PATH=$HOME/.guix-profile/lib/guile/2.2/site-ccache:$GUILE_LOAD_COMPILED_PATH
-
-
 
 # Java fix?
 export NLS_LANG=American_America.UTF8
@@ -109,12 +107,18 @@ export ANDROID_HOME=/home/g1smo/Android/Sdk
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
+# Chrome scaling
+export CHROMIUM_FLAGS="--force-device-scale-factor=2"
+
 # Guix!
 export GUIX_PROFILE="$HOME/.guix-profile"
+#export GUIX_PROFILE="$HOME/.config/guix/current"
 export GUIX_PROFILE_FILE="$GUIX_PROFILE/etc/profile"
-#[ -e $GUIX_PROFILE_FILE ] && source $GUIX_PROFILE_FILE
+[ -e $GUIX_PROFILE_FILE ] && source $GUIX_PROFILE_FILE
 export GUIX_PACKAGE_PATH="$HOME/Projects/guix-packages"
 export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
+#export PATH="/home/g1smo/.config/guix/current/bin${PATH:+:}$PATH"
+export PATH="/home/g1smo/.guix-profile/bin${PATH:+:}$PATH"
 #export SSL_CERT_DIR="$GUIX_PROFILE/etc/ssl/certs"
 #export SSL_CERT_FILE="$SSL_CERT_DIR/ca-certificates.crt"
 #export GIT_SSL_CAINFO="$SSL_CERT_FILE"
