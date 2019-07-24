@@ -108,7 +108,10 @@ export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 # Chrome scaling
-export CHROMIUM_FLAGS="--force-device-scale-factor=2"
+export CHROMIUM_FLAGS="--force-device-scale-factor=1.66"
+
+# Flatpak
+export XDG_DATA_DIRS="/home/g1smo/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
 
 # Guix!
 export GUIX_PROFILE="$HOME/.guix-profile"
@@ -118,7 +121,7 @@ export GUIX_PROFILE_FILE="$GUIX_PROFILE/etc/profile"
 export GUIX_PACKAGE_PATH="$HOME/Projects/guix-packages"
 export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
 #export PATH="/home/g1smo/.config/guix/current/bin${PATH:+:}$PATH"
-export PATH="/home/g1smo/.guix-profile/bin${PATH:+:}$PATH"
+export PATH="$GUIX_PROFILE/bin${PATH:+:}$PATH"
 #export SSL_CERT_DIR="$GUIX_PROFILE/etc/ssl/certs"
 #export SSL_CERT_FILE="$SSL_CERT_DIR/ca-certificates.crt"
 #export GIT_SSL_CAINFO="$SSL_CERT_FILE"

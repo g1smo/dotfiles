@@ -20,9 +20,10 @@ set $menu "rofi -combi-modi window,drun -show combi -modi combi -config ~/.local
 #set $menu j4-dmenu-desktop
 #set $menu compgen -c | sort -u | fzf | xargs -r swaymsg -t command exec
 
-#output eDP-1 resolution 2440x1440 scale 2
-output eDP-1 resolution 1920x1080 scale 1
-output "*" background ~/Pictures/wlp.jpg fill
+#output eDP-1 resolution 2560x1440 scale 2
+output eDP-1 resolution 2560x1440 scale 2
+#output eDP-1 resolution 1920x1080 scale 1
+output "*" background ~/Slike/Wallpapers/neka_trava.jpg fill
 
 # start a terminal
 bindsym $mod+Return exec $term
