@@ -69,6 +69,7 @@ This function should only modify configuration layer settings."
      coffeescript
      racket
      go
+     mu4e
 
      ;; Disable flychecker
      (syntax-checking :variables syntax-checking-enable-by-default nil)

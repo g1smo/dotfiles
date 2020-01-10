@@ -142,7 +142,9 @@ assign [class="Lollypop"] $w7
 
 # Program startup
 exec thunderbird &
-exec revolt &
+#exec revolt &
+exec riot-web &
+exec pidgin &
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -181,32 +183,33 @@ bindsym $mod+r mode "resize"
 
 # External monitor
 set $restart_compton (killall compton && compton -b) || compton -b
-bindsym $mod+p exec xrandr --output HDMI1 --auto --right-of eDP1 && $set_bg && $restart_compton
-bindsym $mod+Shift+p exec xrandr --output HDMI1 --off && $restart_compton
+set $restart_polybar ~/.config/polybar/launch.sh
+bindsym $mod+p exec xrandr --output HDMI1 --auto --right-of eDP1 && $set_bg && $restart_compton && $restart_polybar
+bindsym $mod+Shift+p exec xrandr --output HDMI1 --off && $restart_compton && $restart_polybar
 
 # Lock screen
 bindsym $mod+shift+b exec i3lock-fancy
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    position top
-    status_command i3blocks
-    #status_command i3bar
-    colors {
-        background #232323
-        statusline #DCDCDC
-
-        focused_workspace  #555555 #555555 #ffffff
-        inactive_workspace #232323 #232323 #888888
-    }
-    #font pango:Fira Mono, Icons 10
-    #font pango:Iosevka Medium 10
-    font pango: Iosevka Medium 8
-    strip_workspace_numbers yes
-    height 46
-    tray_padding 2
-}
+#bar {
+#    position top
+#    status_command i3blocks
+#    #status_command i3bar
+#    colors {
+#        background #232323
+#        statusline #DCDCDC
+#
+#        focused_workspace  #555555 #555555 #ffffff
+#        inactive_workspace #232323 #232323 #888888
+#    }
+#    #font pango:Fira Mono, Icons 10
+#    #font pango:Iosevka Medium 10
+#    font pango: Iosevka Medium 8
+#    strip_workspace_numbers yes
+#    height 46
+#    tray_padding 2
+#}
 
 # Colors
 client.focused          #444444 #444444 #A9D000 #8c9825 #444444
@@ -221,8 +224,13 @@ client.background       #222222
 
 # Touchpad tap to click
 exec --no-startup-id xinput set-prop "Synaptics TM3289-002" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "Synaptics TM3289-002" "Synaptics Tap Action" 0 0 0 0 1 3
+
 # Touchpad natural scrolling
 exec --no-startup-id xinput set-prop "Synaptics TM3289-002" "libinput Natural Scrolling Enabled" 1
+#exec --no-startup-id xinput set-prop "Synaptics TM3289-002" 314 -44 -44
+exec --no-startup-id xinput set-prop "Synaptics TM3289-002" "Synaptics Scrolling Distance" -44 -44
+
 
 # Cursor acceleration
 exec --no-startup-id xinput set-prop "Synaptics TM3289-002" "libinput Accel Speed" 0.456
@@ -234,7 +242,8 @@ exec --no-startup-id xinput set-prop "Synaptics TM3289-002" "libinput Accel Spee
 exec --no-startup-id compton --unredir-if-possible -b
 
 # Redshift (hello sleep)
-exec redshift-gtk &
+#exec redshift-gtk &
+exec redshift -l 46.0552778:14.5144444
 
 # Background
 set $set_bg feh --bg-fill ~/Slike/Wallpapers/neka_trava.jpg
@@ -247,7 +256,6 @@ exec nm-applet &
 #exec_always --no-startup-id "setxkbmap -layout us,si -option grp:lctrl_lwin_toggle -option compose:caps"
 exec_always --no-startup-id "setxkbmap -layout us,si -option grp:win_space_toggle -option compose:caps"
 #exec_always --no-startup-id "setxkbmap -layout us,si -option compose:caps"
-#exec_always --no-startup-id "setxkbmap -layout us,si -option compose:caps"
 
 # Change layout
 bindym $mod+space exec "i3-keyboard-layout cycle us si"
@@ -257,9 +265,10 @@ bindym $mod+space exec "i3-keyboard-layout cycle us si"
 gaps inner 7
 gaps outer 0
 smart_gaps on
-#smart_borders on
 # No titles
 for_window [class="^.*"] border pixel 2
+
+#smart_borders on
 
 # Mouse focus
 focus_follows_mouse yes
@@ -274,8 +283,10 @@ bindsym Mod1+shift+w exec chromium --force-device-scale-factor=1
 
 # Increase volume
 set $vol_sig_cmd pkill -RTMIN+10 i3blocks
-set $vol_down_cmd pulsemixer --change-volume -5
-set $vol_up_cmd pulsemixer --change-volume +5
+#set $vol_down_cmd pulsemixer --change-volume -5
+#set $vol_up_cmd pulsemixer --change-volume +5
+set $vol_down_cmd amixer -q sset Master 5%-
+set $vol_up_cmd amixer -q sset Master 5%+
 bindsym $mod+shift+d exec "$vol_up_cmd && $vol_sig_cmd"
 bindsym XF86AudioRaiseVolume exec "$vol_up_cmd && $vol_sig_cmd"
 # Decrease volume
@@ -324,5 +335,8 @@ exec --no-startup-id /usr/share/gnome-settings-daemon
 # Pulseaudio zagon
 exec --no-startup-id /usr/bin/pulseaudio -D
 
+# JACK audio baby
+exec --no-startup-id qjackctl
+
 # Polybar
-#exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh

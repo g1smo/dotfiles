@@ -15,9 +15,10 @@ export VISUAL="vim"
 # Color
 autoload colors zsh/terminfo
 colors
-# PATH additions
+
+# GO PATH additions
 export GOPATH=~/Sredstva/go
-export PATH="/home/g1smo/bin:/home/g1smo/.gem/ruby/2.5.0/bin:$GOPATH/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$GOPATH/bin:$PATH"
 
 # Default term (i3)
 export TERMINAL="termite"
@@ -35,8 +36,12 @@ precmd () {
 	vcs_info
 }
 
+# GIT prompt
 setopt prompt_subst
 PROMPT='%n@%m %1~ %{$fg[green]%}${vcs_info_msg_0_}%{$fg[blue]%}» %{$reset_color%}'
+
+# Reverse search shortcut
+bindkey '^R' history-incremental-pattern-search-backward
 
 # Aliases
 alias ls='ls --color=auto'
@@ -52,17 +57,13 @@ alias pacsize="expac -H M '%m\t%n' | sort -h"
 alias ffon="sudo cp /etc/resolv.conf.ff /etc/resolv.conf"
 alias gitclean="git fetch -p && for branch in \$(git branch -vv | grep ': gone]' | gawk '{print \$1}'); do git branch -D \$branch; echo 'deleted \$branch'; done"
 alias sctl="systemctl"
+alias ddrush="ddev exec drush"
+alias dcomposer="ddev exec composer"
 
 # Firefox scaling!
 alias sf="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixelsPerPx\\\", \\\")[0-9\\.]+/\\11\.00/' {} + ; firefox"
 # regular firefox
 alias ff="find ~/.mozilla/firefox -name \"prefs.js\" -exec sed -ri 's/(devPixelsPerPx\\\", \\\")[0-9\\.]+/\\11\.75/' {} + ; firefox"
-
-# Reverse search shortcut
-bindkey '^R' history-incremental-pattern-search-backward
-
-export SCALA_HOME="/usr/share/scala"
-export SAL_USE_VCLPLUGIN="gtk"
 
 # NVM
 #export NVM_DIR="/home/g1smo/.nvm"
@@ -77,11 +78,14 @@ alias wxon="xhost +local:"
 # RŠ aliasi
 alias omnom="ssh root@debeli"
 
+# Ljudmila
+alias scdev="ssh culture@milci.ljudmila.org"
+
 # Dolzina mp3 fajlov
 alias mp3len="for i in \$(ls *.mp3); do echo \$i; soxi -d \$i; done"
 
 # Hiter ping za net preverit
-alias pg="ping 8.8.8.8"
+alias pg="ping 1.1.1.1"
 
 # Najvecji fajli
 alias najvecji="find . -printf '%s %p\n'| sort -nr | head -30"
@@ -103,7 +107,7 @@ export NLS_LANG=American_America.UTF8
 export DTK_PROGRAM=espeak
 
 # Android SDK && React Native build settings
-export ANDROID_HOME=/home/g1smo/Android/Sdk
+export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
@@ -111,18 +115,49 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export CHROMIUM_FLAGS="--force-device-scale-factor=1.66"
 
 # Flatpak
-export XDG_DATA_DIRS="/home/g1smo/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
+export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
 
 # Guix!
 export GUIX_PROFILE="$HOME/.guix-profile"
 #export GUIX_PROFILE="$HOME/.config/guix/current"
+
 export GUIX_PROFILE_FILE="$GUIX_PROFILE/etc/profile"
 [ -e $GUIX_PROFILE_FILE ] && source $GUIX_PROFILE_FILE
-export GUIX_PACKAGE_PATH="$HOME/Projects/guix-packages"
-export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
-#export PATH="/home/g1smo/.config/guix/current/bin${PATH:+:}$PATH"
-export PATH="$GUIX_PROFILE/bin${PATH:+:}$PATH"
+
+# Svez guix bin
+export PATH="$HOME/.config/guix/current/bin${PATH:+:}$PATH"
+
+export GUIX_PACKAGE_PATH="$HOME/Projekti/guix-packages"
+export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
 #export SSL_CERT_DIR="$GUIX_PROFILE/etc/ssl/certs"
 #export SSL_CERT_FILE="$SSL_CERT_DIR/ca-certificates.crt"
 #export GIT_SSL_CAINFO="$SSL_CERT_FILE"
 #export CURL_CA_BUNDLE="$SSL_CERT_FILE"
+
+camp() {
+  curl -s https://fahrplan.events.ccc.de/camp/2019/Fahrplan/schedule.json \
+    | jq -r '.schedule.conference.days | .[] | select(.date=="'$(date +%F)'") | .rooms | .[] | .[] | select(.date|strptime("%Y-%m-%dT%H:%M:%S%z") > now) | "\(.start) \(.duration)|\(.room)|\(.title)"' \
+    | sort -V | column -t -s'|'
+}
+
+# BARVE!
+export GREP_COLOR='1;32'
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+function _colorman() {
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[1;35m") \
+    LESS_TERMCAP_md=$(printf "\e[1;34m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[7;40m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;33m") \
+      "$@"
+}
+function man() { _colorman man "$@"; }
+function perldoc() { command perldoc -n less "$@" |man -l -; }
+
+# Splosno barvanje zadev
+[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
