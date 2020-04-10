@@ -134,7 +134,7 @@ bindsym Mod1+Shift+ccaron move workspace to output right
 bindsym Mod1+Shift+j move workspace to output left
 
 # workspace bindings
-assign [class="Thunderbird"] $w3
+assign [class="thunderbird"] $w3
 assign [class="Slack"] $w4
 assign [class="Riot"] $w4
 assign [class="Revolt"] $w4
@@ -285,8 +285,8 @@ bindsym Mod1+shift+w exec chromium --force-device-scale-factor=1
 set $vol_sig_cmd pkill -RTMIN+10 i3blocks
 #set $vol_down_cmd pulsemixer --change-volume -5
 #set $vol_up_cmd pulsemixer --change-volume +5
-set $vol_down_cmd amixer -q sset Master 5%-
-set $vol_up_cmd amixer -q sset Master 5%+
+set $vol_down_cmd amixer -c 0 -q sset Master 2%-
+set $vol_up_cmd amixer -c 0 -q sset Master 2%+
 bindsym $mod+shift+d exec "$vol_up_cmd && $vol_sig_cmd"
 bindsym XF86AudioRaiseVolume exec "$vol_up_cmd && $vol_sig_cmd"
 # Decrease volume
@@ -333,10 +333,10 @@ bindsym 0xff61 exec gnome-screenshot -i
 exec --no-startup-id /usr/share/gnome-settings-daemon
 
 # Pulseaudio zagon
-exec --no-startup-id /usr/bin/pulseaudio -D
+#exec --no-startup-id /usr/bin/pulseaudio -D
 
 # JACK audio baby
-exec --no-startup-id qjackctl
+#exec --no-startup-id qjackctl
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh

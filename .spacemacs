@@ -106,7 +106,8 @@ This function should only modify configuration layer settings."
                                       tidal
                                       htmlize
                                       fireplace
-                                      arduino-mode)
+                                      arduino-mode
+                                      fennel-mode)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -568,7 +569,7 @@ before packages are loaded."
 
   ;; Use react mode instead of js2 mode
   ;;(add-to-list 'auto-mode-alist '("\\.js$" . react-mode))
-  (add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))
+  ;(add-to-list 'auto-mode-alist '("\\.js$" . rjsx-mode))
 
   ;; Auto completion settings
   ;;(setq auto-completion-return-key-behavior nil)

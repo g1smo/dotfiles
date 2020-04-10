@@ -115,20 +115,23 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export CHROMIUM_FLAGS="--force-device-scale-factor=1.66"
 
 # Flatpak
-export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
+export XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share/applications:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
+
+# Racket scaling
+export PLT_DISPLAY_BACKING_SCALE=2
 
 # Guix!
-export GUIX_PROFILE="$HOME/.guix-profile"
+#export GUIX_PROFILE="$HOME/.guix-profile"
 #export GUIX_PROFILE="$HOME/.config/guix/current"
 
-export GUIX_PROFILE_FILE="$GUIX_PROFILE/etc/profile"
-[ -e $GUIX_PROFILE_FILE ] && source $GUIX_PROFILE_FILE
+#export GUIX_PROFILE_FILE="$GUIX_PROFILE/etc/profile"
+#[ -e $GUIX_PROFILE_FILE ] && source $GUIX_PROFILE_FILE
 
 # Svez guix bin
-export PATH="$HOME/.config/guix/current/bin${PATH:+:}$PATH"
+#export PATH="$HOME/.config/guix/current/bin${PATH:+:}$PATH"
 
 export GUIX_PACKAGE_PATH="$HOME/Projekti/guix-packages"
-export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
+export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale/2.29/"
 #export SSL_CERT_DIR="$GUIX_PROFILE/etc/ssl/certs"
 #export SSL_CERT_FILE="$SSL_CERT_DIR/ca-certificates.crt"
 #export GIT_SSL_CAINFO="$SSL_CERT_FILE"
