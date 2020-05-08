@@ -243,7 +243,7 @@ exec --no-startup-id compton --unredir-if-possible -b
 
 # Redshift (hello sleep)
 #exec redshift-gtk &
-exec redshift -l 46.0552778:14.5144444
+exec --no-startup-id redshift-gtk -l 46.0552778:14.5144444 &
 
 # Background
 set $set_bg feh --bg-fill ~/Slike/Wallpapers/neka_trava.jpg
@@ -254,7 +254,7 @@ exec nm-applet &
 
 # Keyboard layout, caps lock as compose key
 #exec_always --no-startup-id "setxkbmap -layout us,si -option grp:lctrl_lwin_toggle -option compose:caps"
-exec_always --no-startup-id "setxkbmap -layout us,si -option grp:win_space_toggle -option compose:caps"
+#exec_always --no-startup-id "setxkbmap -layout us,si -option grp:win_space_toggle -option compose:caps"
 #exec_always --no-startup-id "setxkbmap -layout us,si -option compose:caps"
 
 # Change layout
@@ -265,6 +265,7 @@ bindym $mod+space exec "i3-keyboard-layout cycle us si"
 gaps inner 7
 gaps outer 0
 smart_gaps on
+
 # No titles
 for_window [class="^.*"] border pixel 2
 
@@ -336,7 +337,13 @@ exec --no-startup-id /usr/share/gnome-settings-daemon
 #exec --no-startup-id /usr/bin/pulseaudio -D
 
 # JACK audio baby
-#exec --no-startup-id qjackctl
+#exec qjackctl
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Signal chat ane
+exec /usr/bin/signal-desktop
+
+# autotajling
+exec --no-startup-id autotiling

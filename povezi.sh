@@ -35,3 +35,6 @@ ln -s $DIR/.Xresources ~/.Xresources
 ln -s $DIR/.zlogin ~/.zlogin
 
 ln -s $DIR/.gitconfig ~/.gitconfig
+
+ln -s $DIR/.profile ~/.profile
+ln -s $DIR/.zprofile ~/.zprofile
